@@ -6,13 +6,13 @@
 #    By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/17 14:14:45 by bjasper           #+#    #+#              #
-#    Updated: 2020/01/17 15:15:37 by bjasper          ###   ########.fr        #
+#    Updated: 2020/01/20 18:07:19 by bjasper          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
-SRC = src/push_swap.c src/checker.c
+SRC = src/checker.c src/liba.c
 
 INCL = includes/push_swap.h
 
@@ -25,7 +25,7 @@ OBJ = $(SRC:.c=.o)
 all: $(NAME)
 
 $(NAME): $(OBJ)
-	gcc $(OBJ) -o fillit
+	gcc -g $(OBJ) -o $(NAME)
 
 %.o: %.c ${INCL}
 	gcc $(GCC_FLAGS) -c $< -o $@
