@@ -4,6 +4,8 @@
 #include <stdio.h> //delete
 #include <stdlib.h>
 #include <unistd.h>
+#include <fcntl.h>
+#include "/Users/bjasper/Desktop/push_swap/src/libft/libft.h"
 
 # define ERROR_NOT_INT		"some arguments are not integers"
 # define ERROR_BIGGER_INT	"some arguments are bigger than an integer"
@@ -16,11 +18,12 @@ typedef struct		s_swap
 	struct s_swap	*next;	
 }					t_swap;
 
-t_swap	*ft_lstnew(int num);
-void	*ft_memalloc(size_t size);
-void	ft_memdel(void **ap);
-int		ft_atoi(const char *str, char **error);
-void	ft_lstadd(t_swap **stack, t_swap *new);
+t_swap	*f_lstnew(int num);
+// void	*ft_memalloc(size_t size);
+// void	ft_memdel(void **ap);
+int		f_atoi(const char *str, char **error);
+// void	ft_lstadd(t_swap **stack, t_swap *new);
+// int		get_next_line(const int fd, char **line);
 
 
 #endif

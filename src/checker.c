@@ -1,6 +1,6 @@
 #include "../includes/push_swap.h"
 
-void ft_lstadd(t_swap **stack, t_swap *new)
+void f_lstadd(t_swap **stack, t_swap *new)
 {
 	if (!stack)
 		new->next = NULL;
@@ -18,13 +18,13 @@ int	ft_make_stack(int ac, char **av, t_swap **a_stack)
 
 	ac--;
 	error = NULL;
-	*a_stack = ft_lstnew(ft_atoi(av[ac], &error));
+	*a_stack = f_lstnew(f_atoi(av[ac], &error));
 	ac--;
 	while (ac)
 	{
-		new = ft_lstnew(ft_atoi(av[ac], &error));
+		new = f_lstnew(f_atoi(av[ac], &error));
 		--ac;
-		ft_lstadd(a_stack, new);
+		f_lstadd(a_stack, new);
 	}
 	if (error)
 	{
@@ -34,10 +34,20 @@ int	ft_make_stack(int ac, char **av, t_swap **a_stack)
 	return (1);
 }
 
-// int is_sorted(t_swap *a_stack)
-// {
-
-// }
+int is_sorted(t_swap *a_stack)
+{
+	while (a_stack->next)
+	{
+		if (a_stack->num >= a_stack->next->num)
+		{
+			printf("KO\n");
+			return (0);
+		}
+		a_stack = a_stack->next;
+	}
+	printf("OK\n");
+	return (0);
+}
 
 int	is_dubl(t_swap *a_stack)
 {
@@ -74,7 +84,7 @@ int main(int ac, char **av)
 		return (0);
 	if (is_dubl(a_stack))
 		return (0);
-	// is_sorted(a_stack);	
+	is_sorted(a_stack);	
 	while (a_stack->next)					//check
 	{
 		printf("%d ", a_stack->num);
