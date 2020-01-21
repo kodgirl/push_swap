@@ -76,20 +76,33 @@ int	is_dubl(t_swap *a_stack)
 int main(int ac, char **av)
 {
 	t_swap	*a_stack;
+	t_swap	*b_stack;
+	char	*line;
+	int		size;
+	t_instr	i_list;
 	
 	a_stack = NULL;
+	b_stack = NULL;
 	if (ac == 1)
 		return (0);
 	if (ft_make_stack(ac, av, &a_stack) == 0)
 		return (0);
 	if (is_dubl(a_stack))
 		return (0);
-	is_sorted(a_stack);	
 	while (a_stack->next)					//check
 	{
 		printf("%d ", a_stack->num);
 		a_stack = a_stack->next;
 	}
 	printf("%d ", a_stack->num);			//
+	make_instr(& i_list);
+	while ((size = get_next_line(0, &line)) > 0)
+	{
+		if (read_instruct(line, &a_stack, &b_stack, &i_list) == 0)
+			return (0);
+	}
+	if (size < 0)
+		printf("%s", ERROR_BAD_INSTRUCT);
+	is_sorted(a_stack);	
 	return (0);
 }
