@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:22:37 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/21 14:56:01 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/01/22 14:24:53 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,10 +27,26 @@ void	make_instr(t_instr *i_list)
 	i_list->in[10] = "rrr";
 }
 
-// change_stacks(t_swap **a_stack, t_swap **b_stack, char *line)
-// {
-	
-// }
+int	change_stacks(t_swap **a_stack, t_swap **b_stack, int i)
+{
+	if (i == 0 || i == 2)
+		sa(a_stack);
+	if (i == 1 || i == 2)
+		sa(b_stack);
+	if (i == 3 || i == 5)
+		ra(a_stack);
+	if (i == 4 || i == 5)
+		ra(b_stack);
+	if (i == 6)
+		pa(b_stack, a_stack);
+	if (i == 7)
+		pa(a_stack, b_stack);
+	if (i == 8 || i == 10)
+		rra(a_stack);
+	if (i == 9 || i == 10)
+		rra(b_stack);
+	return (1);
+}
 
 int		is_valid_instr(char *line, t_instr *i_list)
 {
@@ -53,7 +69,7 @@ int		read_instruct(char *line, t_swap **a_stack,	t_swap **b_stack, t_instr *i_li
 		printf("%s", ERROR_BAD_INSTRUCT);
 		return (0);
 	}
-	// change_stacks(a_stack, b_stack, line);
+	change_stacks(a_stack, b_stack, i_list->i);
 	return (1);
 }
 

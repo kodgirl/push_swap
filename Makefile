@@ -6,7 +6,7 @@
 #    By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/17 14:14:45 by bjasper           #+#    #+#              #
-#    Updated: 2020/01/21 13:24:09 by bjasper          ###   ########.fr        #
+#    Updated: 2020/01/22 13:18:39 by bjasper          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,8 @@ NAME = push_swap
 
 SRC =	src/checker.c\
 		src/liba.c\
-		src/parce_instructions.c
+		src/parce_instructions.c\
+		src/do_instruction.c
 
 INCL = includes/push_swap.h 
 
@@ -24,7 +25,7 @@ OBJ = $(SRC:.c=.o)
 
 .PHONY: all clean fclean re
 
-all: $(NAME)
+all: $(NAME) clean		//remove clean
 
 $(NAME): $(OBJ)
 	make -C src/libft

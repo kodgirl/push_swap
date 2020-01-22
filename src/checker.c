@@ -28,7 +28,7 @@ int	ft_make_stack(int ac, char **av, t_swap **a_stack)
 	}
 	if (error)
 	{
-		printf("%s", error);					//change to putstr
+		printf("%s", error);
 		return (0);
 	}
 	return (1);
@@ -89,12 +89,6 @@ int main(int ac, char **av)
 		return (0);
 	if (is_dubl(a_stack))
 		return (0);
-	while (a_stack->next)					//check
-	{
-		printf("%d ", a_stack->num);
-		a_stack = a_stack->next;
-	}
-	printf("%d ", a_stack->num);			//
 	make_instr(& i_list);
 	while ((size = get_next_line(0, &line)) > 0)
 	{
@@ -104,5 +98,19 @@ int main(int ac, char **av)
 	if (size < 0)
 		printf("%s", ERROR_BAD_INSTRUCT);
 	is_sorted(a_stack);	
+
+	while (a_stack->next)					//check
+	{
+		printf("%d ", a_stack->num);
+		a_stack = a_stack->next;
+	}
+	printf("%d \n", a_stack->num);			//
+	while (b_stack->next)					//check
+	{
+		printf("%d ", b_stack->num);
+		b_stack = b_stack->next;
+	}
+	printf("%d ", b_stack->num);			//
+
 	return (0);
 }
