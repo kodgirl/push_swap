@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:38:51 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/22 15:05:33 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/01/27 19:38:55 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,13 +57,14 @@ typedef enum		e_qwe
 
 
 t_swap	*f_lstnew(int num);
-int		read_instruct(char *line, t_swap **a_stack,	t_swap	**b_stack, t_instr *i_list);
+int		read_instruct(char *line, t_stack *stack, t_instr *i_list);
 int		f_atoi(const char *str, char **error);
 void	make_instr(t_instr *i_list);
 void	sa(t_swap **stack);
 void	ra(t_swap **stack);
-void	pa(t_swap **a_stack, t_swap **b_stack);
+int		pa(t_stack *stack);
+int		pb(t_stack *stack);
 void	rra(t_swap **stack);
-int		ft_make_stack(int ac, char **av, t_swap **a_stack);
+int		ft_make_stack(int ac, char **av, t_stack *stack);
 
 #endif

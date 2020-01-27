@@ -2,7 +2,7 @@
 
 void f_lstadd(t_swap **stack, t_swap *new)
 {
-	if (!stack)
+	if (!*stack)
 		new->next = NULL;
 	else
 	{
@@ -11,45 +11,32 @@ void f_lstadd(t_swap **stack, t_swap *new)
 	}
 }
 
-int	ft_make_stack(int ac, char **av, t_swap **a_stack)
+int is_sorted(t_stack *stack)
 {
-	t_swap	*new;
-	char	*error;
-
-	ac--;
-	error = NULL;
-	*a_stack = f_lstnew(f_atoi(av[ac], &error));
-	ac--;
-	while (ac)
+	t_swap *head;
+	
+	head = stack->a_stack;
+	if (stack->lenb != 0)
 	{
-		new = f_lstnew(f_atoi(av[ac], &error));
-		--ac;
-		f_lstadd(a_stack, new);
-	}
-	if (error)
-	{
-		printf("%s", error);
+		printf("KO\n");
 		return (0);
 	}
-	return (1);
-}
-
-int is_sorted(t_swap *a_stack)
-{
-	while (a_stack->next)
+	while (stack->a_stack->next)
 	{
-		if (a_stack->num >= a_stack->next->num)
+		if (stack->a_stack->num >= stack->a_stack->next->num)
 		{
 			printf("KO\n");
+			stack->a_stack = head;
 			return (0);
 		}
-		a_stack = a_stack->next;
+		stack->a_stack = stack->a_stack->next;
 	}
+	stack->a_stack = head;
 	printf("OK\n");
 	return (0);
 }
 
-int	is_dubl(t_swap *a_stack)
+int	is_dubl(t_swap *a_stack, char **error)
 {
 	t_swap	*tmp;
 	t_swap	*head;
@@ -63,8 +50,8 @@ int	is_dubl(t_swap *a_stack)
 		{
 			if (tmp->num == a_stack->num)
 			{
-				printf("%s", ERROR_DUBL);
-				return (1);
+				*error = ERROR_DUBL;
+				return (0);
 			}
 			a_stack = a_stack->next;
 		}
@@ -73,44 +60,70 @@ int	is_dubl(t_swap *a_stack)
 	return (0);
 }
 
+int	ft_make_stack(int ac, char **av, t_stack *stack)
+{
+	t_swap	*new;
+	char	*error;
+
+	ac--;
+	error = NULL;
+	stack->lena = ac;
+	stack->a_stack = ft_memalloc(sizeof(t_swap));
+	stack->b_stack = ft_memalloc(sizeof(t_swap));
+	stack->a_stack = f_lstnew(f_atoi(av[ac], &error));
+	ac--;
+	while (ac)
+	{
+		new = f_lstnew(f_atoi(av[ac], &error));
+		--ac;
+		f_lstadd(&stack->a_stack, new);
+	}
+	is_dubl(stack->a_stack, &error);
+	if (error)
+	{
+		printf("%s", error);
+		return (0);
+	}
+	return (1);
+}
+
 int main(int ac, char **av)
 {
-	t_swap	*a_stack;
-	t_swap	*b_stack;
+	t_stack	*stack;
 	char	*line;
 	int		size;
 	t_instr	i_list;
 	
-	a_stack = NULL;
-	b_stack = NULL;
 	if (ac == 1)
 		return (0);
-	if (ft_make_stack(ac, av, &a_stack) == 0)
+	stack = ft_memalloc(sizeof(t_stack));
+	if (ft_make_stack(ac, av, stack) == 0)
 		return (0);
-	if (is_dubl(a_stack))
-		return (0);
-	make_instr(& i_list);
+	make_instr(&i_list);
 	while ((size = get_next_line(0, &line)) > 0)
 	{
-		if (read_instruct(line, &a_stack, &b_stack, &i_list) == 0)
+		if (read_instruct(line, stack, &i_list) == 0)
 			return (0);
 	}
 	if (size < 0)
 		printf("%s", ERROR_BAD_INSTRUCT);
-	is_sorted(a_stack);	
-
-	while (a_stack->next)					//check
+	is_sorted(stack);
+	while (stack->lena > 1)
 	{
-		printf("%d ", a_stack->num);
-		a_stack = a_stack->next;
+		printf("%d\n", stack->a_stack->num);
+		stack->a_stack = stack->a_stack->next;
+		--stack->lena;
 	}
-	printf("%d \n", a_stack->num);			//
-	while (b_stack->next)					//check
+	if (stack->lena == 1)
+		printf("%d\n", stack->a_stack->num);
+	printf("\n\n");
+	while (stack->lenb > 1)
 	{
-		printf("%d ", b_stack->num);
-		b_stack = b_stack->next;
+		printf("%d\n", stack->b_stack->num);
+		stack->b_stack = stack->b_stack->next;
+		--stack->lenb;
 	}
-	printf("%d ", b_stack->num);			//
-
+	if (stack->lenb == 1)
+		printf("%d\n", stack->b_stack->num);
 	return (0);
 }

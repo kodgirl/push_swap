@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 12:31:59 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/22 14:59:51 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/01/27 19:41:13 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	sa(t_swap **stack)
 {
 	t_swap	*head;
 
-	if (*stack)
+	if (*stack && (*stack)->next)
 	{
 		head = *stack;
 		*stack = (*stack)->next;
@@ -29,7 +29,7 @@ void	ra(t_swap **stack)
 {
 	t_swap	*head;
 
-	if (*stack)
+	if (*stack && (*stack)->next)
 	{
 		head = *stack;
 		while ((*stack)->next)
@@ -40,27 +40,56 @@ void	ra(t_swap **stack)
 	}
 }
 
-void	pa(t_swap **a_stack, t_swap **b_stack)
+int		pa(t_stack *stack)
 {
 	t_swap	*a_head;
 	t_swap	*b_head;
 	
-	if (*a_stack && !(*b_stack))
+	if (stack->lenb == 0)
+		return (0);
+	a_head = stack->a_stack;
+	b_head = stack->b_stack;
+	if (stack->lenb >= 1 && stack->lena == 0)
 	{
-		*b_stack = (t_swap *)ft_memalloc(sizeof(t_swap));
-		(*b_stack)->num = a_head->num;
-		(*a_stack) = (*a_stack)->next;
-		(*b_stack)->next = NULL;
+		stack->a_stack = b_head;
+		stack->b_stack = stack->b_stack->next;
+		stack->a_stack->next = NULL;
 	}
-	else if (*b_stack && *a_stack)
+	else if (stack->lenb >= 1 && stack->lena > 0)
 	{
-		a_head = *a_stack;
-		b_head = *b_stack;
-		(*a_stack) = (*b_stack);
-		(*b_stack)->next = a_head->next;
-		(*b_stack) = b_head->next;
+		stack->a_stack = b_head;
+		stack->a_stack->next = a_head;
+		stack->b_stack = stack->b_stack->next;
 	}
+	stack->lena++;
+	stack->lenb--;
+	return (0);
+}
+
+int		pb(t_stack *stack)
+{
+	t_swap	*a_head;
+	t_swap	*b_head;
 	
+	if (stack->lena == 0)
+		return (0);
+	a_head = stack->a_stack;
+	b_head = stack->b_stack;
+	if (stack->lena >= 1 && stack->lenb == 0)
+	{
+		stack->b_stack = a_head;
+		stack->a_stack = stack->a_stack->next;
+		stack->b_stack->next = NULL;
+	}
+	else if (stack->lena >= 1 && stack->lenb > 0)
+	{
+		stack->b_stack = a_head;
+		stack->b_stack->next = b_head;
+		stack->a_stack = stack->a_stack->next;
+	}
+	stack->lenb++;
+	stack->lena--;
+	return (0);
 }
 
 void	rra(t_swap **stack)
@@ -68,7 +97,7 @@ void	rra(t_swap **stack)
 	t_swap	*head;
 	t_swap	*tmp;
 
-	if (*stack)
+	if (*stack && (*stack)->next)
 	{
 		head = *stack;
 		while ((*stack)->next->next)
