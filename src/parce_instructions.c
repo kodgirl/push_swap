@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:22:37 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/27 19:39:07 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/01/27 20:08:20 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	make_instr(t_instr *i_list)
 	i_list->in[10] = "rrr";
 }
 
-int	change_stacks(t_stack *stack, int i)
+int		change_stacks(t_stack *stack, int i)
 {
 	if (i == 0 || i == 2)
 		sa(&stack->a_stack);
@@ -72,4 +72,3 @@ int		read_instruct(char *line, t_stack *stack, t_instr *i_list)
 	change_stacks(stack, i_list->i);
 	return (1);
 }
-

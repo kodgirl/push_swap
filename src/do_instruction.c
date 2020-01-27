@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 12:31:59 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/27 19:41:13 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/01/27 20:07:44 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ void	ra(t_swap **stack)
 	{
 		head = *stack;
 		while ((*stack)->next)
-			(*stack)= (*stack)->next;
+			(*stack) = (*stack)->next;
 		(*stack)->next = head;
 		(*stack) = head->next;
 		head->next = NULL;
@@ -44,7 +44,7 @@ int		pa(t_stack *stack)
 {
 	t_swap	*a_head;
 	t_swap	*b_head;
-	
+
 	if (stack->lenb == 0)
 		return (0);
 	a_head = stack->a_stack;
@@ -70,7 +70,7 @@ int		pb(t_stack *stack)
 {
 	t_swap	*a_head;
 	t_swap	*b_head;
-	
+
 	if (stack->lena == 0)
 		return (0);
 	a_head = stack->a_stack;

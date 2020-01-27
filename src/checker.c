@@ -1,6 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   checker.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2020/01/27 20:04:45 by bjasper           #+#    #+#             */
+/*   Updated: 2020/01/27 20:06:35 by bjasper          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../includes/push_swap.h"
 
-void f_lstadd(t_swap **stack, t_swap *new)
+void	f_lstadd(t_swap **stack, t_swap *new)
 {
 	if (!*stack)
 		new->next = NULL;
@@ -11,10 +23,10 @@ void f_lstadd(t_swap **stack, t_swap *new)
 	}
 }
 
-int is_sorted(t_stack *stack)
+int		is_sorted(t_stack *stack)
 {
 	t_swap *head;
-	
+
 	head = stack->a_stack;
 	if (stack->lenb != 0)
 	{
@@ -36,7 +48,7 @@ int is_sorted(t_stack *stack)
 	return (0);
 }
 
-int	is_dubl(t_swap *a_stack, char **error)
+int		s_dubl(t_swap *a_stack, char **error)
 {
 	t_swap	*tmp;
 	t_swap	*head;
@@ -60,7 +72,7 @@ int	is_dubl(t_swap *a_stack, char **error)
 	return (0);
 }
 
-int	ft_make_stack(int ac, char **av, t_stack *stack)
+int		ft_make_stack(int ac, char **av, t_stack *stack)
 {
 	t_swap	*new;
 	char	*error;
@@ -87,13 +99,13 @@ int	ft_make_stack(int ac, char **av, t_stack *stack)
 	return (1);
 }
 
-int main(int ac, char **av)
+int		main(int ac, char **av)
 {
 	t_stack	*stack;
 	char	*line;
 	int		size;
 	t_instr	i_list;
-	
+
 	if (ac == 1)
 		return (0);
 	stack = ft_memalloc(sizeof(t_stack));

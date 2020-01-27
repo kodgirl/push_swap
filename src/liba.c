@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 18:01:06 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/27 15:57:40 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/01/27 20:03:20 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,24 +20,19 @@ t_swap	*f_lstnew(int num)
 		return (NULL);
 	new->num = num;
 	new->next = NULL;
-	return (new);	
+	return (new);
 }
 
 int		f_atoi(const char *str, char **error)
 {
-	int					a;
-	int	b;
-	size_t				check;
+	int		a;
+	int		b;
+	size_t	check;
 
 	a = 1;
 	b = 0;
-	if (*str == 45)
-	{
+	if (*str == 45 && str++)
 		a = -a;
-		str++;
-	}
-	else if (*str == 43)
-		str++;
 	if (*str < 48 || *str > 57)
 		*error = ERROR_NOT_INT;
 	while (*str >= 48 && *str <= 57)
@@ -47,7 +42,7 @@ int		f_atoi(const char *str, char **error)
 		if (check != b / 10)
 		{
 			*error = ERROR_BIGGER_INT;
-			return (a == 1 ? -1 : 0);
+			return (0);
 		}
 		str++;
 	}
