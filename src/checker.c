@@ -6,11 +6,11 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:04:45 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/29 13:10:43 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/01/29 19:41:43 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "/Users/bjasper/Desktop/git/includes/push_swap.h"
 
 void	f_lstadd(t_swap **stack, t_swap *new)
 {
@@ -45,7 +45,7 @@ int		is_sorted(t_stack *stack)
 	}
 	stack->a_stack = head;
 	printf("OK\n");
-	return (0);
+	return (1);
 }
 
 int		is_dubl(t_swap *a_stack, char **error)
@@ -97,4 +97,38 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 		return (0);
 	}
 	return (1);
+}
+
+void	print_stacks(t_stack *stack)
+{
+	t_swap *a_head;
+	t_swap *b_head;
+	int		a;
+	int		b;
+	
+	a_head = stack->a_stack;
+	b_head = stack->b_stack;
+	a = stack->lena;
+	b = stack->lenb;
+	printf("lena: %d\n", a);
+	printf("lenb: %d\n", b);
+	while (a > 1)
+	{
+		printf("%d\n", stack->a_stack->num);
+		stack->a_stack = stack->a_stack->next;
+		--a;
+	}
+	if (a == 1)
+		printf("%d\n", stack->a_stack->num);
+	printf("\n\n");
+	while (b > 1)
+	{
+		printf("%d\n", stack->b_stack->num);
+		stack->b_stack = stack->b_stack->next;
+		--b;
+	}
+	if (b == 1)
+		printf("%d\n", stack->b_stack->num);
+	stack->a_stack = a_head;
+	stack->b_stack = b_head;
 }

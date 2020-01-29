@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:38:51 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/29 13:14:58 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/01/29 20:18:15 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include "/Users/bjasper/Desktop/push_swap/src/libft/libft.h"
+#include "/Users/bjasper/Desktop/git/src/libft/libft.h"
 
 # define ERROR_NOT_INT		"some arguments are not integers"
 # define ERROR_BIGGER_INT	"some arguments are bigger than an integer"
@@ -27,7 +27,8 @@
 typedef struct		s_swap
 {
 	int				num;
-	struct s_swap	*next;	
+	struct s_swap	*next;
+	int				index;	
 }					t_swap;
 
 typedef struct		s_instr
@@ -69,5 +70,11 @@ int		ft_make_stack(int ac, char **av, t_stack *stack);
 void	f_lstadd(t_swap **stack, t_swap *new);
 int		is_sorted(t_stack *stack);
 int		is_dubl(t_swap *a_stack, char **error);
+void	print_stacks(t_stack *stack);
+void	push_swap(t_stack *stack);
+void	find_index(t_swap *stack, int *tab, int len);
+void 	ft_sort(int *tab, int len);
+void	num_to_ind(t_swap *stack, int len);
+void	print_index(t_stack *stack);
 
 #endif

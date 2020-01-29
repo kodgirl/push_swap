@@ -6,11 +6,11 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 18:01:06 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/27 20:03:20 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/01/29 14:38:36 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../includes/push_swap.h"
+#include "/Users/bjasper/Desktop/git/includes/push_swap.h"
 
 t_swap	*f_lstnew(int num)
 {
