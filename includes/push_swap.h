@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:38:51 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/29 20:18:15 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/01/29 20:53:58 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,8 @@ typedef struct		s_swap
 {
 	int				num;
 	struct s_swap	*next;
-	int				index;	
+	int				index;
+	int				act;	
 }					t_swap;
 
 typedef struct		s_instr

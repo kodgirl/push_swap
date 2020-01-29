@@ -6,7 +6,7 @@
 #    By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/17 14:14:45 by bjasper           #+#    #+#              #
-#    Updated: 2020/01/29 20:21:03 by bjasper          ###   ########.fr        #
+#    Updated: 2020/01/29 21:19:02 by bjasper          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -31,8 +31,8 @@ SRC_P =	src/main_pushswap.c\
 		src/push_swap.c\
 		src/checker.c\
 		src/liba.c\
-		src/index.c
-		# src/do_instruction.c
+		src/index.c\
+		src/do_instruction.c
 
 OBJ_P = $(SRC_P:.c=.o)
 
