@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 12:31:59 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/27 20:07:44 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/01/29 13:01:08 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,8 @@ int		pb(t_stack *stack)
 	else if (stack->lena >= 1 && stack->lenb > 0)
 	{
 		stack->b_stack = a_head;
-		stack->b_stack->next = b_head;
 		stack->a_stack = stack->a_stack->next;
+		stack->b_stack->next = b_head;
 	}
 	stack->lenb++;
 	stack->lena--;

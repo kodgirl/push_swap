@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:38:51 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/27 19:38:55 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/01/29 13:14:58 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,5 +66,8 @@ int		pa(t_stack *stack);
 int		pb(t_stack *stack);
 void	rra(t_swap **stack);
 int		ft_make_stack(int ac, char **av, t_stack *stack);
+void	f_lstadd(t_swap **stack, t_swap *new);
+int		is_sorted(t_stack *stack);
+int		is_dubl(t_swap *a_stack, char **error);
 
 #endif

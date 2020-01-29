@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap.c                                        :+:      :+:    :+:   */
+/*   main_checker.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/29 13:16:46 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/29 13:17:53 by bjasper          ###   ########.fr       */
+/*   Created: 2020/01/29 13:11:05 by bjasper           #+#    #+#             */
+/*   Updated: 2020/01/29 13:11:09 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int		main(int ac, char **av)
 {
 	t_stack	*stack;
 	char	*line;
+	int		size;
 	t_instr	i_list;
 
 	if (ac == 1)
@@ -23,6 +24,15 @@ int		main(int ac, char **av)
 	stack = ft_memalloc(sizeof(t_stack));
 	if (ft_make_stack(ac, av, stack) == 0)
 		return (0);
+	make_instr(&i_list);
+	while ((size = get_next_line(0, &line)) > 0)
+	{
+		if (read_instruct(line, stack, &i_list) == 0)
+			return (0);
+	}
+	if (size < 0)
+		printf("%s", ERROR_BAD_INSTRUCT);
+	is_sorted(stack);
 	printf("lena: %d\n", stack->lena);
 	printf("lenb: %d\n", stack->lenb);
 	while (stack->lena > 1)
