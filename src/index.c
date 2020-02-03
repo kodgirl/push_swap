@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 20:19:36 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/29 20:19:55 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/03 16:14:48 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,21 +92,22 @@ void	print_index(t_stack *stack)
 	printf("lenb: %d\n", b);
 	while (a > 1)
 	{
-		printf("%d\n", stack->a_stack->index);
+		printf("%d --- %d\n", stack->a_stack->index, stack->a_stack->act);
 		stack->a_stack = stack->a_stack->next;
 		--a;
 	}
 	if (a == 1)
-		printf("%d\n", stack->a_stack->index);
+		printf("%d --- %d\n", stack->a_stack->index, stack->a_stack->act);
 	printf("\n\n");
 	while (b > 1)
 	{
-		printf("%d\n", stack->b_stack->index);
+		printf("%d --- %d\n", stack->b_stack->index, stack->b_stack->act);
 		stack->b_stack = stack->b_stack->next;
 		--b;
 	}
 	if (b == 1)
-		printf("%d\n", stack->b_stack->index);
+		printf("%d --- %d\n", stack->b_stack->index, stack->b_stack->act);
 	stack->a_stack = a_head;
 	stack->b_stack = b_head;
+	printf("\n\n");
 }

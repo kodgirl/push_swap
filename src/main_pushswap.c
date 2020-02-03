@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 20:15:10 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/29 21:21:02 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/03 14:53:59 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,6 @@ int		main(int ac, char **av)
 		return (0);
 	num_to_ind(stack->a_stack, stack->lena);
 	push_swap(stack);
-	print_stacks(stack);
+	// print_stacks(stack);
 	return (0);
 }

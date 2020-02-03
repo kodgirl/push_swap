@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:38:51 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/29 20:53:58 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/03 15:06:59 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,5 +77,6 @@ void	find_index(t_swap *stack, int *tab, int len);
 void 	ft_sort(int *tab, int len);
 void	num_to_ind(t_swap *stack, int len);
 void	print_index(t_stack *stack);
+void	do_act(t_stack *stack);
 
 #endif

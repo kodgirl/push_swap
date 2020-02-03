@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:11:05 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/29 15:36:27 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/03 12:39:16 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,10 @@ int		main(int ac, char **av)
 	{
 		if (read_instruct(line, stack, &i_list) == 0)
 			return (0);
+		print_stacks(stack);
 	}
 	if (size < 0)
 		printf("%s", ERROR_BAD_INSTRUCT);
 	is_sorted(stack);
-	print_stacks(stack);
 	return (0);
 }

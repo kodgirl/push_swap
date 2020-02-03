@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 12:31:59 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/29 14:38:36 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/03 15:50:45 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ void	sa(t_swap **stack)
 		head->next = (*stack)->next;
 		(*stack)->next = head;
 	}
+	printf("sa\n");
 }
 
 void	ra(t_swap **stack)
@@ -38,6 +39,7 @@ void	ra(t_swap **stack)
 		(*stack) = head->next;
 		head->next = NULL;
 	}
+	printf("ra\n");
 }
 
 int		pa(t_stack *stack)
@@ -45,6 +47,7 @@ int		pa(t_stack *stack)
 	t_swap	*a_head;
 	t_swap	*b_head;
 
+	printf("pa\n");
 	if (stack->lenb == 0)
 		return (0);
 	a_head = stack->a_stack;
@@ -58,8 +61,8 @@ int		pa(t_stack *stack)
 	else if (stack->lenb >= 1 && stack->lena > 0)
 	{
 		stack->a_stack = b_head;
-		stack->a_stack->next = a_head;
 		stack->b_stack = stack->b_stack->next;
+		stack->a_stack->next = a_head;
 	}
 	stack->lena++;
 	stack->lenb--;
@@ -71,6 +74,7 @@ int		pb(t_stack *stack)
 	t_swap	*a_head;
 	t_swap	*b_head;
 
+	printf("pb\n");
 	if (stack->lena == 0)
 		return (0);
 	a_head = stack->a_stack;
@@ -107,4 +111,5 @@ void	rra(t_swap **stack)
 		(*stack)->next = head;
 		tmp->next = NULL;
 	}
+	printf("rra\n");
 }
