@@ -6,11 +6,45 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 18:01:06 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/29 14:38:36 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/04 16:14:35 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "/Users/bjasper/Desktop/git/includes/push_swap.h"
+
+void	print_stacks(t_stack *stack)
+{
+	t_swap *a_head;
+	t_swap *b_head;
+	int		a;
+	int		b;
+	
+	a_head = stack->a_stack;
+	b_head = stack->b_stack;
+	a = stack->lena;
+	b = stack->lenb;
+	printf("lena: %d\n", a);
+	printf("lenb: %d\n", b);
+	while (a > 1)
+	{
+		printf("%d\n", stack->a_stack->num);
+		stack->a_stack = stack->a_stack->next;
+		--a;
+	}
+	if (a == 1)
+		printf("%d\n", stack->a_stack->num);
+	printf("\n\n");
+	while (b > 1)
+	{
+		printf("%d\n", stack->b_stack->num);
+		stack->b_stack = stack->b_stack->next;
+		--b;
+	}
+	if (b == 1)
+		printf("%d\n", stack->b_stack->num);
+	stack->a_stack = a_head;
+	stack->b_stack = b_head;
+}
 
 t_swap	*f_lstnew(int num)
 {

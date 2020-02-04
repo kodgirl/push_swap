@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:16:46 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/04 14:33:43 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/04 16:43:39 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,42 @@ void	count_act1(t_stack *stack)
 	stack->b_stack = head;
 }
 
+void	sort_limits(t_swap **stack)
+{
+	int	a;
+	int	b;
+	int	c;
+
+	a = (*stack)->index;
+	b = (*stack)->next->index;
+	c = (*stack)->next->next->index;
+	if (b > c && b > a)
+	{
+		if (c > a)
+		{
+			sa(stack);
+			rra(stack);
+		}
+	}
+	if (c > a && c > b)
+	{
+		if (a > b)
+		{
+			ra(stack);
+			sa(stack);
+		}
+		else
+			ra(stack);
+	}
+	if (a > b && a > c)
+	{
+		if (b < c)
+			rra(stack);
+		else
+			sa(stack);
+	}
+}
+
 void	find_limits(t_stack *stack)
 {
 	int max;
@@ -94,18 +130,18 @@ void	find_limits(t_stack *stack)
 	max = stack->lena - 1;
 	min = 0;
 	mid = max / 2;
-	while (stack->lena > 2)
+	while (stack->lena > 3)
 	{
-		if (stack->a_stack->index == max || stack->a_stack->index == min)
+		if (stack->a_stack->index == max || stack->a_stack->index == min || stack->a_stack->index == max - 1)
 		{
 			ra(&stack->a_stack);
 			stack->result++;
 		}
 		else if (stack->a_stack->index <= mid)
 		{
-			if (stack->lena == 3 && stack->a_stack->index < stack->a_stack->next->index)
-				break ;
-			else
+			// if (stack->lena == 3 && stack->a_stack->index < stack->a_stack->next->index)
+			// 	break ;
+			// else
 				pb(stack);
 		}
 		else if (stack->a_stack->index > mid)
@@ -114,12 +150,14 @@ void	find_limits(t_stack *stack)
 			ra(&stack->b_stack);
 			stack->result++;
 		}
+		print_stacks(stack);
 	}
-	if (stack->lena == 2 && stack->a_stack->index < stack->a_stack->next->index)
-	{
-		sa(&stack->a_stack);
-		stack->result++;
-	}
+	// if (stack->lena == 2 && stack->a_stack->index < stack->a_stack->next->index)
+	// {
+	// 	sa(&stack->a_stack);
+	// 	stack->result++;
+	// }
+	sort_limits(&stack->a_stack);
 }
 
 void	finish_sort(t_stack *stack)
@@ -142,7 +180,6 @@ void	push_swap(t_stack *stack)
 			if (stack->lena == 3)
 			{
 				sort_of_three(&stack->a_stack);
-				// break ;
 			}
 			else if (stack->lena > 3)
 				find_limits(stack);
@@ -153,13 +190,16 @@ void	push_swap(t_stack *stack)
 			{
 				pa(stack);
 			}
+			print_stacks(stack);
 			count_act1(stack);
 			count_act2(stack);
 			// print_index(stack);
 			do_act(stack);
+			print_stacks(stack);
 		}
 		if (stack->lenb == 0)
 			finish_sort(stack);
+		print_stacks(stack);
 		--i;
 		// print_stacks(stack);
 	}
