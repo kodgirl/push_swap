@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:38:51 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/03 15:06:59 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/04 14:22:33 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct		s_stack
 	t_swap			*b_stack;
 	int				lena;
 	int				lenb;
+	int				result;
 }					t_stack;
 
 
@@ -78,5 +79,7 @@ void 	ft_sort(int *tab, int len);
 void	num_to_ind(t_swap *stack, int len);
 void	print_index(t_stack *stack);
 void	do_act(t_stack *stack);
+void	sort_of_three(t_swap **stack);
+void	finish_sort(t_stack *stack);
 
 #endif

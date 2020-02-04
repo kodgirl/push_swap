@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:16:46 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/03 17:33:15 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/04 14:33:43 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,8 @@ void	count_act1(t_stack *stack)
 	mid = stack->lenb / 2;
 	while (i <= mid && stack->b_stack->next)
 	{
-		printf("---------------------%d\n", i);
 		stack->b_stack->act = i;
-		// if (stack->b_stack->next)
-			stack->b_stack = stack->b_stack->next;
+		stack->b_stack = stack->b_stack->next;
 		++i;
 	}
 	--i;
@@ -99,7 +97,10 @@ void	find_limits(t_stack *stack)
 	while (stack->lena > 2)
 	{
 		if (stack->a_stack->index == max || stack->a_stack->index == min)
+		{
 			ra(&stack->a_stack);
+			stack->result++;
+		}
 		else if (stack->a_stack->index <= mid)
 		{
 			if (stack->lena == 3 && stack->a_stack->index < stack->a_stack->next->index)
@@ -111,16 +112,23 @@ void	find_limits(t_stack *stack)
 		{
 			pb(stack);
 			ra(&stack->b_stack);
+			stack->result++;
 		}
 	}
 	if (stack->lena == 2 && stack->a_stack->index < stack->a_stack->next->index)
+	{
 		sa(&stack->a_stack);
+		stack->result++;
+	}
 }
 
-void	finish_sort(t_swap **stack)
+void	finish_sort(t_stack *stack)
 {
-	while ((*stack)->index != 0)
-		ra(stack);
+	while (stack->a_stack->index != 0)
+	{
+		ra(&stack->a_stack);
+		stack->result++;
+	}
 }
 
 void	push_swap(t_stack *stack)
@@ -130,16 +138,30 @@ void	push_swap(t_stack *stack)
 	while (is_sorted(stack) == 0 && ( i > 0 || stack->lenb > 0))
 	{
 		if (stack->lenb == 0)
-			find_limits(stack);
-		if (stack->lena == 2)
-			pa(stack);
-		count_act1(stack);
-		count_act2(stack);
-		print_index(stack);
-		do_act(stack);
+		{
+			if (stack->lena == 3)
+			{
+				sort_of_three(&stack->a_stack);
+				// break ;
+			}
+			else if (stack->lena > 3)
+				find_limits(stack);
+		}
+		if (stack->lenb != 0)
+		{
+			if (stack->lena == 2)
+			{
+				pa(stack);
+			}
+			count_act1(stack);
+			count_act2(stack);
+			// print_index(stack);
+			do_act(stack);
+		}
 		if (stack->lenb == 0)
-			finish_sort(&stack->a_stack);
+			finish_sort(stack);
 		--i;
+		// print_stacks(stack);
 	}
-	print_stacks(stack);
+	// print_stacks(stack);
 }

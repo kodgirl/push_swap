@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:04:45 by bjasper           #+#    #+#             */
-/*   Updated: 2020/01/29 19:41:43 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/04 13:45:03 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,21 +30,21 @@ int		is_sorted(t_stack *stack)
 	head = stack->a_stack;
 	if (stack->lenb != 0)
 	{
-		printf("KO\n");
+		// printf("KO\n");
 		return (0);
 	}
 	while (stack->a_stack->next)
 	{
 		if (stack->a_stack->num >= stack->a_stack->next->num)
 		{
-			printf("KO\n");
+			// printf("KO\n");
 			stack->a_stack = head;
 			return (0);
 		}
 		stack->a_stack = stack->a_stack->next;
 	}
 	stack->a_stack = head;
-	printf("OK\n");
+	// printf("OK\n");
 	return (1);
 }
 
@@ -90,7 +90,8 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 		--ac;
 		f_lstadd(&stack->a_stack, new);
 	}
-	is_dubl(stack->a_stack, &error);
+	if (error == NULL)
+		is_dubl(stack->a_stack, &error);
 	if (error)
 	{
 		printf("%s", error);

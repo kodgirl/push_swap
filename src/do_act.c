@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:05:52 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/03 15:35:21 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/04 14:34:27 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ void	do_act(t_stack *stack)
 		while (a > 0)
 		{
 			ra(&stack->a_stack);
+			stack->result++;
 			--a;
 		}
 		pa(stack);
@@ -44,9 +45,11 @@ void	do_act(t_stack *stack)
 	else if (b <= a && b <= c)
 	{
 		sa(&stack->b_stack);
+		stack->result++;
 		while (a > 1)
 		{
 			ra(&stack->a_stack);
+			stack->result++;
 			--a;
 		}
 		pa(stack);
@@ -54,11 +57,41 @@ void	do_act(t_stack *stack)
 	else if (c <= a && c <= b)
 	{
 		rra(&stack->b_stack);
+		stack->result++;
 		while (a > 1)
 		{
 			ra(&stack->a_stack);
 			--a;
+			stack->result++;
 		}
 		pa(stack);
+	}
+}
+
+void	sort_of_three(t_swap **stack)
+{
+	int a;
+	int b;
+	int c;
+
+	a = (*stack)->index;
+	b = (*stack)->next->index;
+	c = (*stack)->next->next->index;
+	if (a < b && a < c)
+	{
+		sa(stack);
+		ra(stack);
+	}
+	else if (c < a && c < b)
+	{
+		if (a < b)
+			rra(stack);
+	}
+	else if (b < a && b < c)
+	{
+		if (a > c)
+			ra(stack);
+		else
+			sa(stack);
 	}
 }

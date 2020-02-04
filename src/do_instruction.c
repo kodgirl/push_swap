@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 12:31:59 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/03 15:50:45 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/04 13:46:47 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ int		pa(t_stack *stack)
 	t_swap	*a_head;
 	t_swap	*b_head;
 
+	stack->result++;
 	printf("pa\n");
 	if (stack->lenb == 0)
 		return (0);
@@ -74,6 +75,7 @@ int		pb(t_stack *stack)
 	t_swap	*a_head;
 	t_swap	*b_head;
 
+	stack->result++;
 	printf("pb\n");
 	if (stack->lena == 0)
 		return (0);
