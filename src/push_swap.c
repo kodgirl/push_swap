@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:16:46 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/04 16:43:39 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/04 17:38:09 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	count_act2(t_stack *stack)
 	while (len > 0)
 	{
 		stack->a_stack = a_head;
-		while (stack->b_stack->index > stack->a_stack->index || stack->b_stack->index < a_tail->index)
+		while (stack->a_stack->next && (stack->b_stack->index > stack->a_stack->index || stack->b_stack->index < a_tail->index))
 		{
 			stack->b_stack->act++;
 			a_tail = stack->a_stack;
