@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:38:51 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/04 16:08:11 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/05 21:51:35 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include "/Users/bjasper/Desktop/git/src/libft/libft.h"
+#include "/Users/bjasper/Desktop/g/src/libft/libft.h"
 
 # define ERROR_NOT_INT		"some arguments are not integers"
 # define ERROR_BIGGER_INT	"some arguments are bigger than an integer"
@@ -29,7 +29,12 @@ typedef struct		s_swap
 	int				num;
 	struct s_swap	*next;
 	int				index;
-	int				act;	
+	int				amount_rb;
+	int				amount_rrb;
+	int				amount_ra;
+	int				amount_rra;	
+	int				amount_rr;
+	int				amount_rrr;	
 }					t_swap;
 
 typedef struct		s_instr
@@ -81,5 +86,6 @@ void	print_index(t_stack *stack);
 void	do_act(t_stack *stack);
 void	sort_of_three(t_swap **stack);
 void	finish_sort(t_stack *stack);
+void	combine_instructions(t_swap *b_stack);
 
 #endif

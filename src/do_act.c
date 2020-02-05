@@ -6,11 +6,11 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:05:52 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/04 15:40:36 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/05 19:59:54 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/bjasper/Desktop/git/includes/push_swap.h"
+#include "/Users/bjasper/Desktop/g/includes/push_swap.h"
 
 void	do_act(t_stack *stack)
 {
@@ -24,9 +24,9 @@ void	do_act(t_stack *stack)
 	b = 10;
 	c = 10;
 	b_head = stack->b_stack;
-	a = stack->b_stack->act;
+	// a = stack->b_stack->act;
 	if (stack->lenb > 1)
-		b = stack->b_stack->next->act;
+		// b = stack->b_stack->next->act;
 	while (stack->b_stack->next)
 		stack->b_stack = stack->b_stack->next;
 	c = stack->b_stack->index;
