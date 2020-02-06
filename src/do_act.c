@@ -6,66 +6,69 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:05:52 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/05 19:59:54 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/06 21:22:17 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "/Users/bjasper/Desktop/g/includes/push_swap.h"
-
-void	do_act(t_stack *stack)
+void	do_act(t_stack *stack, t_swap *min)
 {
-	int a;
-	int b;
-	int c;
-	int i;
-	t_swap	*b_head;
-
-	a = 10;
-	b = 10;
-	c = 10;
-	b_head = stack->b_stack;
-	// a = stack->b_stack->act;
-	if (stack->lenb > 1)
-		// b = stack->b_stack->next->act;
-	while (stack->b_stack->next)
-		stack->b_stack = stack->b_stack->next;
-	c = stack->b_stack->index;
-	stack->b_stack = b_head;
-	if (a <= b && a <= c)
+	while (min->amount_rr)
 	{
-		while (a > 0)
-		{
-			ra(&stack->a_stack);
-			stack->result++;
-			--a;
-		}
-		pa(stack);
-	
+		ra(&stack->a_stack);
+		ra(&stack->b_stack);
+		min->amount_rr--;
 	}
-	else if (b <= a && b <= c)
+	while (min->amount_rrr)
 	{
-		sa(&stack->b_stack);
-		stack->result++;
-		while (a > 1)
-		{
-			ra(&stack->a_stack);
-			stack->result++;
-			--a;
-		}
-		pa(stack);
+		rra(&stack->a_stack);
+		rra(&stack->b_stack);
+		min->amount_rrr--;
 	}
-	else if (c <= a && c <= b)
+	while (min->amount_ra)
+	{
+		ra(&stack->a_stack);
+		min->amount_ra--;
+	}
+	while (min->amount_rb)
+	{
+		ra(&stack->b_stack);
+		min->amount_rb--;
+	}
+	while (min->amount_rra)
+	{
+		rra(&stack->a_stack);
+		min->amount_rra--;
+	}
+	while (min->amount_rrb)
 	{
 		rra(&stack->b_stack);
-		stack->result++;
-		while (a > 1)
-		{
-			ra(&stack->a_stack);
-			--a;
-			stack->result++;
-		}
-		pa(stack);
+		min->amount_rrb--;
 	}
+	pa(stack);	
+}
+
+t_swap	*find_minimal_act(t_stack *stack)
+{
+	int		act_current;
+	int		act_min;
+	t_swap	*min;
+	t_swap	*tmp;
+
+	min = stack->b_stack;
+	tmp = stack->b_stack;
+	act_min = min->amount_ra + min->amount_rb + min->amount_rrb + min->amount_rra + min->amount_rr + min->amount_rrr;
+	while (tmp->next)
+	{
+		tmp = tmp->next;
+		act_current = tmp->amount_ra + tmp->amount_rb + tmp->amount_rrb + tmp->amount_rra + tmp->amount_rr + tmp->amount_rrr;
+		if (act_current < act_min)
+		{
+			min = tmp;
+			act_min = act_current;
+		}
+	}
+	return (min);
 }
 
 void	sort_of_three(t_swap **stack)
@@ -93,5 +96,19 @@ void	sort_of_three(t_swap **stack)
 			ra(stack);
 		else
 			sa(stack);
+	}
+}
+
+void	acts_to_zero(t_swap *stack)
+{
+	while (stack)
+	{
+		stack->amount_rrr = 0;
+		stack->amount_rrb = 0;
+		stack->amount_rra = 0;
+		stack->amount_rr = 0;
+		stack->amount_rb = 0;
+		stack->amount_ra = 0;
+		stack = stack->next;
 	}
 }

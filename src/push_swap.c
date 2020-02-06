@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:16:46 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/05 21:44:43 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/06 21:25:00 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,33 +147,27 @@ void	finish_sort(t_stack *stack)
 void	push_swap(t_stack *stack)
 {
 	int i = 1;
+	t_swap	*act;
 	
 	if (stack->lena == 3)
 		sort_of_three(&stack->a_stack);
 	else if (!is_sorted(stack) && stack->lenb == 0)
 		find_limits(stack);
-	print_stacks(stack);
-	if (is_sorted(stack) == 0)
+	while (is_sorted(stack) == 0)
 	{
 		if (stack->lenb != 0)
 		{
 			if (stack->lena == 3)
 				pa(stack);
+			acts_to_zero(stack->b_stack);
 			count_act1(stack);
 			count_act2(stack);
 			combine_instructions(stack->b_stack);
-			print_stacks(stack);
-			print_index(stack);
-		// 	// print_index(stack);
-		// 	do_act(stack);
-		// 	print_stacks(stack);
-		// }
-		// if (stack->lenb == 0)
-		// 	finish_sort(stack);
-		// print_stacks(stack);
-		// --i;
-		// print_stacks(stack);
+			act = find_minimal_act(stack);
+			do_act(stack, act);		//can add to previous function
 		}
+		if (stack->lenb == 0)
+			finish_sort(stack);
 	}
 	print_stacks(stack);
 }

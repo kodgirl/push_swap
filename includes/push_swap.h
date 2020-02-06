@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:38:51 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/05 21:51:35 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/06 21:20:54 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,9 +83,11 @@ void	find_index(t_swap *stack, int *tab, int len);
 void 	ft_sort(int *tab, int len);
 void	num_to_ind(t_swap *stack, int len);
 void	print_index(t_stack *stack);
-void	do_act(t_stack *stack);
+void	do_act(t_stack *stack, t_swap *min);
 void	sort_of_three(t_swap **stack);
 void	finish_sort(t_stack *stack);
 void	combine_instructions(t_swap *b_stack);
+t_swap	*find_minimal_act(t_stack *stack);
+void	acts_to_zero(t_swap *stack);
 
 #endif
