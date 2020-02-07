@@ -10,7 +10,8 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/bjasper/Desktop/g/includes/push_swap.h"
+#include "../includes/push_swap.h"
+
 int		insert_place(t_swap *iterator_a, t_swap *iterator_b, t_swap *a_past)
 {
 	int			index_a;
@@ -119,17 +120,13 @@ void	find_limits(t_stack *stack)
 	while (stack->lena > 3)
 	{
 		if (stack->a_stack->index == max || stack->a_stack->index == min || stack->a_stack->index == max - 1)
-		{
 			ra(&stack->a_stack);
-			stack->result++;
-		}
 		else if (stack->a_stack->index >= mid)
 			pb(stack);
 		else if (stack->a_stack->index < mid)
 		{
 			pb(stack);
-			ra(&stack->b_stack);
-			stack->result++;
+			rb(&stack->b_stack);
 		}
 	}
 	sort_limits(&stack->a_stack);
@@ -138,15 +135,11 @@ void	find_limits(t_stack *stack)
 void	finish_sort(t_stack *stack)
 {
 	while (stack->a_stack->index != 0)
-	{
 		ra(&stack->a_stack);
-		stack->result++;
-	}
 }
 
 void	push_swap(t_stack *stack)
 {
-	int i = 1;
 	t_swap	*act;
 	
 	if (stack->lena == 3)

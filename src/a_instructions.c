@@ -6,11 +6,11 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 12:31:59 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/05 19:57:37 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/04 16:17:15 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/bjasper/Desktop/g/includes/push_swap.h"
+#include "/home/bjasper/Projects/push_swap/includes/push_swap.h"
 
 void	sa(t_swap **stack)
 {
@@ -47,7 +47,6 @@ int		pa(t_stack *stack)
 	t_swap	*a_head;
 	t_swap	*b_head;
 
-	stack->result++;
 	printf("pa\n");
 	if (stack->lenb == 0)
 		return (0);
@@ -67,34 +66,6 @@ int		pa(t_stack *stack)
 	}
 	stack->lena++;
 	stack->lenb--;
-	return (0);
-}
-
-int		pb(t_stack *stack)
-{
-	t_swap	*a_head;
-	t_swap	*b_head;
-
-	stack->result++;
-	printf("pb\n");
-	if (stack->lena == 0)
-		return (0);
-	a_head = stack->a_stack;
-	b_head = stack->b_stack;
-	if (stack->lena >= 1 && stack->lenb == 0)
-	{
-		stack->b_stack = a_head;
-		stack->a_stack = stack->a_stack->next;
-		stack->b_stack->next = NULL;
-	}
-	else if (stack->lena >= 1 && stack->lenb > 0)
-	{
-		stack->b_stack = a_head;
-		stack->a_stack = stack->a_stack->next;
-		stack->b_stack->next = b_head;
-	}
-	stack->lenb++;
-	stack->lena--;
 	return (0);
 }
 

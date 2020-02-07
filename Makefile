@@ -15,7 +15,9 @@ NAME_C = checker
 SRC_C =	src/checker.c\
 		src/liba.c\
 		src/parce_instructions.c\
-		src/do_instruction.c\
+		src/a_instructions.c\
+		src/ab_instructions.c\
+		src/b_instructions.c\
 		src/main_checker.c
 
 INCL = includes/push_swap.h 
@@ -32,7 +34,9 @@ SRC_P =	src/main_pushswap.c\
 		src/checker.c\
 		src/liba.c\
 		src/index.c\
-		src/do_instruction.c\
+		src/a_instructions.c\
+		src/ab_instructions.c\
+		src/b_instructions.c\
 		src/do_act.c\
 		src/combiner.c
 

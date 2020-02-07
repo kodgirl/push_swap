@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/bjasper/Desktop/g/includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 int		main(int ac, char **av)
 {
@@ -26,7 +26,5 @@ int		main(int ac, char **av)
 		return (0);
 	num_to_ind(stack->a_stack, stack->lena);
 	push_swap(stack);
-	// print_stacks(stack);
-	printf("Result is %d instructions!\n", stack->result);
 	return (0);
 }

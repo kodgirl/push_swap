@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/bjasper/Desktop/g/includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 void	f_lstadd(t_swap **stack, t_swap *new)
 {
@@ -76,6 +76,7 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 {
 	t_swap	*new;
 	char	*error;
+	int		number;
 
 	ac--;
 	error = NULL;
@@ -86,7 +87,8 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 	ac--;
 	while (ac)
 	{
-		new = f_lstnew(f_atoi(av[ac], &error));
+		number = f_atoi(av[ac], &error);
+		new = f_lstnew(number);
 		--ac;
 		f_lstadd(&stack->a_stack, new);
 	}

@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include "/Users/bjasper/Desktop/g/src/libft/libft.h"
+#include "../src/libft/libft.h"
 
 # define ERROR_NOT_INT		"some arguments are not integers"
 # define ERROR_BIGGER_INT	"some arguments are bigger than an integer"
@@ -73,6 +73,12 @@ void	ra(t_swap **stack);
 int		pa(t_stack *stack);
 int		pb(t_stack *stack);
 void	rra(t_swap **stack);
+void	sb(t_swap **stack);
+void	rb(t_swap **stack);
+void	rrb(t_swap **stack);
+void	ss(t_stack *stack);
+void	rr(t_stack *stack);
+void	rrr(t_stack *stack);
 int		ft_make_stack(int ac, char **av, t_stack *stack);
 void	f_lstadd(t_swap **stack, t_swap *new);
 int		is_sorted(t_stack *stack);
