@@ -6,11 +6,11 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:04:45 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/04 16:14:42 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/10 15:40:04 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/bjasper/Desktop/git/includes/push_swap.h"
+#include "/Users/bjasper/Desktop/g/includes/push_swap.h"
 
 void	f_lstadd(t_swap **stack, t_swap *new)
 {
@@ -29,22 +29,17 @@ int		is_sorted(t_stack *stack)
 
 	head = stack->a_stack;
 	if (stack->lenb != 0)
-	{
-		// printf("KO\n");
 		return (0);
-	}
 	while (stack->a_stack->next)
 	{
 		if (stack->a_stack->num >= stack->a_stack->next->num)
 		{
-			// printf("KO\n");
 			stack->a_stack = head;
 			return (0);
 		}
 		stack->a_stack = stack->a_stack->next;
 	}
 	stack->a_stack = head;
-	// printf("OK\n");
 	return (1);
 }
 

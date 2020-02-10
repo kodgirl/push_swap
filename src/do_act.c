@@ -6,66 +6,67 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:05:52 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/04 15:40:36 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/10 15:41:54 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/bjasper/Desktop/git/includes/push_swap.h"
-
-void	do_act(t_stack *stack)
+#include "/Users/bjasper/Desktop/g/includes/push_swap.h"
+void	do_act(t_stack *stack, t_swap *min)
 {
-	int a;
-	int b;
-	int c;
-	int i;
-	t_swap	*b_head;
+	while (min->amount_rr)
+	{
+		rr(stack);
+		min->amount_rr--;
+	}
+	while (min->amount_rrr)
+	{
+		rrr(stack);
+		min->amount_rrr--;
+	}
+	while (min->amount_ra)
+	{
+		ra(&stack->a_stack);
+		min->amount_ra--;
+	}
+	while (min->amount_rb)
+	{
+		rb(&stack->b_stack);
+		min->amount_rb--;
+	}
+	while (min->amount_rra)
+	{
+		rra(&stack->a_stack);
+		min->amount_rra--;
+	}
+	while (min->amount_rrb)
+	{
+		rrb(&stack->b_stack);
+		min->amount_rrb--;
+	}
+	pa(stack);	
+}
 
-	a = 10;
-	b = 10;
-	c = 10;
-	b_head = stack->b_stack;
-	a = stack->b_stack->act;
-	if (stack->lenb > 1)
-		b = stack->b_stack->next->act;
-	while (stack->b_stack->next)
-		stack->b_stack = stack->b_stack->next;
-	c = stack->b_stack->index;
-	stack->b_stack = b_head;
-	if (a <= b && a <= c)
+t_swap	*find_minimal_act(t_stack *stack)
+{
+	int		act_current;
+	int		act_min;
+	t_swap	*min;
+	t_swap	*tmp;
+
+	min = stack->b_stack;
+	tmp = stack->b_stack;
+	act_min = min->amount_ra + min->amount_rb + min->amount_rrb + min->amount_rra + min->amount_rr + min->amount_rrr;
+	while (tmp->next)
 	{
-		while (a > 0)
+		tmp = tmp->next;
+		act_current = tmp->amount_ra + tmp->amount_rb + tmp->amount_rrb + tmp->amount_rra + tmp->amount_rr + tmp->amount_rrr;
+		if (act_current < act_min)
 		{
-			ra(&stack->a_stack);
-			stack->result++;
-			--a;
+			min = tmp;
+			act_min = act_current;
 		}
-		pa(stack);
-	
 	}
-	else if (b <= a && b <= c)
-	{
-		sa(&stack->b_stack);
-		stack->result++;
-		while (a > 1)
-		{
-			ra(&stack->a_stack);
-			stack->result++;
-			--a;
-		}
-		pa(stack);
-	}
-	else if (c <= a && c <= b)
-	{
-		rra(&stack->b_stack);
-		stack->result++;
-		while (a > 1)
-		{
-			ra(&stack->a_stack);
-			--a;
-			stack->result++;
-		}
-		pa(stack);
-	}
+	return (min);
 }
 
 void	sort_of_three(t_swap **stack)
@@ -93,5 +94,19 @@ void	sort_of_three(t_swap **stack)
 			ra(stack);
 		else
 			sa(stack);
+	}
+}
+
+void	acts_to_zero(t_swap *stack)
+{
+	while (stack)
+	{
+		stack->amount_rrr = 0;
+		stack->amount_rrb = 0;
+		stack->amount_rra = 0;
+		stack->amount_rr = 0;
+		stack->amount_rb = 0;
+		stack->amount_ra = 0;
+		stack = stack->next;
 	}
 }

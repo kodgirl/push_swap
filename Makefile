@@ -6,7 +6,7 @@
 #    By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/17 14:14:45 by bjasper           #+#    #+#              #
-#    Updated: 2020/02/03 15:53:26 by bjasper          ###   ########.fr        #
+#    Updated: 2020/02/10 15:35:16 by bjasper          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,7 +15,9 @@ NAME_C = checker
 SRC_C =	src/checker.c\
 		src/liba.c\
 		src/parce_instructions.c\
-		src/do_instruction.c\
+		src/a_instructions.c\
+		src/b_instructions.c\
+		src/ab_instructions.c\
 		src/main_checker.c
 
 INCL = includes/push_swap.h 
@@ -32,8 +34,11 @@ SRC_P =	src/main_pushswap.c\
 		src/checker.c\
 		src/liba.c\
 		src/index.c\
-		src/do_instruction.c\
-		src/do_act.c
+		src/a_instructions.c\
+		src/b_instructions.c\
+		src/ab_instructions.c\
+		src/do_act.c\
+		src/combiner.c
 
 OBJ_P = $(SRC_P:.c=.o)
 
@@ -54,6 +59,7 @@ $(NAME_P): $(OBJ_P)
 	
 clean:
 	rm -rf $(OBJ_C) $(OBJ_P)
+	@make clean -C src/libft/
 
 fclean: clean
 	rm -rf $(NAME_C) $(NAME_P)

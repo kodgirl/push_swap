@@ -6,11 +6,11 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:22:37 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/04 16:16:34 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/05 19:57:37 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/bjasper/Desktop/git/includes/push_swap.h"
+#include "/Users/bjasper/Desktop/g/includes/push_swap.h"
 
 void	make_instr(t_instr *i_list)
 {
