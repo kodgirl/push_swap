@@ -6,44 +6,26 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:05:52 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 16:47:00 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/10 20:26:37 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 void	do_act(t_stack *stack, t_swap *min)
 {
-	while (min->amount_rr)
-	{
-		rr(stack);
-		min->amount_rr--;
-	}
-	while (min->amount_rrr)
-	{
-		rrr(stack);
-		min->amount_rrr--;
-	}
-	while (min->amount_ra)
-	{
-		ra(&stack->a_stack);
-		min->amount_ra--;
-	}
-	while (min->amount_rb)
-	{
-		rb(&stack->b_stack);
-		min->amount_rb--;
-	}
-	while (min->amount_rra)
-	{
-		rra(&stack->a_stack);
-		min->amount_rra--;
-	}
-	while (min->amount_rrb)
-	{
-		rrb(&stack->b_stack);
-		min->amount_rrb--;
-	}
-	pa(stack);	
+	while (min->amount_rr--)
+		rr(stack, 1);
+	while (min->amount_rrr--)
+		rrr(stack, 1);
+	while (min->amount_ra--)
+		ra(&stack->a_stack, 1);
+	while (min->amount_rb--)
+		rb(&stack->b_stack, 1);
+	while (min->amount_rra--)
+		rra(&stack->a_stack, 1);
+	while (min->amount_rrb--)
+		rrb(&stack->b_stack, 1);
+	pa(stack, 1);	
 }
 
 t_swap	*find_minimal_act(t_stack *stack)
@@ -78,22 +60,27 @@ void	sort_of_three(t_swap **stack)
 	a = (*stack)->index;
 	b = (*stack)->next->index;
 	c = (*stack)->next->next->index;
-	if (a < b && a < c)
+	if (a < b && a < c && b > c)
 	{
-		sa(stack);
-		ra(stack);
+		sa(stack, 1);
+		ra(stack, 1);
 	}
 	else if (c < a && c < b)
 	{
 		if (a < b)
-			rra(stack);
+			rra(stack, 1);
+		else
+		{
+			sa(stack, 1);
+			rra(stack, 1);
+		}
 	}
 	else if (b < a && b < c)
 	{
 		if (a > c)
-			ra(stack);
+			ra(stack, 1);
 		else
-			sa(stack);
+			sa(stack, 1);
 	}
 }
 

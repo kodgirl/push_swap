@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:04:45 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 18:14:23 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/10 19:18:53 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,10 +83,7 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 	char	*error;
 	char	**big_str;
 	int		i;
-	int		first_flag;
 
-	ac--;
-	first_flag = 0;
 	error = NULL;
 	stack->a_stack = ft_memalloc(sizeof(t_swap));
 	stack->b_stack = ft_memalloc(sizeof(t_swap));
@@ -98,10 +95,9 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 		while (i > 0)
 		{
 			--i;
-			if (first_flag == 0)
+			if (stack->lena == 0)
 			{
 				stack->a_stack = f_lstnew(f_atoi(big_str[i], &error));
-				first_flag = 1;
 				stack->lena++;
 			}
 			else
@@ -109,7 +105,7 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 				new = f_lstnew(f_atoi(big_str[i], &error));
 				f_lstadd(&stack->a_stack, new);
 				stack->lena++;
-			}				
+			}
 		}
 		--ac;
 	}

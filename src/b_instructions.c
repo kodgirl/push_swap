@@ -6,13 +6,13 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 16:46:38 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 16:46:39 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/10 19:27:40 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	sb(t_swap **stack)
+void	sb(t_swap **stack, int flag)
 {
 	t_swap	*head;
 
@@ -23,10 +23,11 @@ void	sb(t_swap **stack)
 		head->next = (*stack)->next;
 		(*stack)->next = head;
 	}
-	printf("sb\n");
+	if (flag == 1)
+		printf("sb\n");
 }
 
-void	rb(t_swap **stack)
+void	rb(t_swap **stack, int flag)
 {
 	t_swap	*head;
 
@@ -39,15 +40,17 @@ void	rb(t_swap **stack)
 		(*stack) = head->next;
 		head->next = NULL;
 	}
-	printf("rb\n");
+	if (flag == 1)
+		printf("rb\n");
 }
 
-int		pb(t_stack *stack)
+int		pb(t_stack *stack, int flag)
 {
 	t_swap	*a_head;
 	t_swap	*b_head;
 
-	printf("pb\n");
+	if (flag == 1)
+		printf("pb\n");
 	if (stack->lena == 0)
 		return (0);
 	a_head = stack->a_stack;
@@ -69,7 +72,7 @@ int		pb(t_stack *stack)
 	return (0);
 }
 
-void	rrb(t_swap **stack)
+void	rrb(t_swap **stack, int flag)
 {
 	t_swap	*head;
 	t_swap	*tmp;
@@ -84,5 +87,6 @@ void	rrb(t_swap **stack)
 		(*stack)->next = head;
 		tmp->next = NULL;
 	}
-	printf("rrb\n");
+	if (flag == 1)
+		printf("rrb\n");
 }

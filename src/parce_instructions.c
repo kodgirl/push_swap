@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:22:37 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 16:47:29 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/10 21:31:43 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,22 +29,28 @@ void	make_instr(t_instr *i_list)
 
 int		change_stacks(t_stack *stack, int i)
 {
-	if (i == 0 || i == 2)
-		sa(&stack->a_stack);
-	if (i == 1 || i == 2)
-		sa(&stack->b_stack);
-	if (i == 3 || i == 5)
-		ra(&stack->a_stack);
-	if (i == 4 || i == 5)
-		ra(&stack->b_stack);
+	if (i == 0)
+		sa(&stack->a_stack, 0);
+	if (i == 1)
+		sb(&stack->b_stack, 0);
+	if (i == 2)
+		ss(stack, 0);
+	if (i == 3)
+		ra(&stack->a_stack, 0);
+	if (i == 4)
+		rb(&stack->b_stack, 0);
+	if (i == 5)
+		rr(stack, 0);
 	if (i == 6)
-		pa(stack);
+		pa(stack, 0);
 	if (i == 7)
-		pb(stack);
-	if (i == 8 || i == 10)
-		rra(&stack->a_stack);
-	if (i == 9 || i == 10)
-		rra(&stack->b_stack);
+		pb(stack, 0);
+	if (i == 8)
+		rra(&stack->a_stack, 0);
+	if (i == 9)
+		rrb(&stack->b_stack, 0);
+	if (i == 10)
+		rrr(stack, 0);
 	return (1);
 }
 

@@ -6,7 +6,7 @@
 #    By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/17 14:14:45 by bjasper           #+#    #+#              #
-#    Updated: 2020/02/10 15:35:16 by bjasper          ###   ########.fr        #
+#    Updated: 2020/02/10 20:36:02 by bjasper          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -52,7 +52,7 @@ $(NAME_C): $(OBJ_C)
 
 $(NAME_P): $(OBJ_P)
 	make -C src/libft
-	gcc -o $(NAME_P) $(OBJ_P) -L./src/libft -lft
+	gcc -g -o $(NAME_P) $(OBJ_P) -L./src/libft -lft
 	
 %.o: %.c ${INCL}
 	gcc -g -I $(INCL) $< -c -o $@

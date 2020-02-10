@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:11:05 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 18:02:04 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/10 21:33:14 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,9 +22,10 @@ int		main(int ac, char **av)
 	if (ac == 1)
 		return (0);
 	stack = ft_memalloc(sizeof(t_stack));
-	if (ft_make_stack(ac, av, stack) == 0)
+	if (ft_make_stack(ac - 1, av, stack) == 0)
 		return (0);
 	make_instr(&i_list);
+	
 	while ((size = get_next_line(0, &line)) > 0)
 	{
 		if (read_instruct(line, stack, &i_list) == 0)

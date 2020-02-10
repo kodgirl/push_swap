@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:38:51 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 16:45:43 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/10 21:25:56 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,17 +55,17 @@ t_swap	*f_lstnew(int num);
 int		read_instruct(char *line, t_stack *stack, t_instr *i_list);
 int		f_atoi(const char *str, char **error);
 void	make_instr(t_instr *i_list);
-void	sa(t_swap **stack);
-void	ra(t_swap **stack);
-int		pa(t_stack *stack);
-int		pb(t_stack *stack);
-void	rra(t_swap **stack);
-void	rrb(t_swap **stack);
-void	rb(t_swap **stack);
-void	sb(t_swap **stack);
-void	ss(t_stack *stack);
-void	rr(t_stack *stack);
-void	rrr(t_stack *stack);
+void	sa(t_swap **stack, int flag);
+void	ra(t_swap **stack, int flag);
+int		pa(t_stack *stack, int flag);
+int		pb(t_stack *stack, int flag);
+void	rra(t_swap **stack, int flag);
+void	rrb(t_swap **stack, int flag);
+void	rb(t_swap **stack, int flag);
+void	sb(t_swap **stack, int flag);
+void	ss(t_stack *stack, int flag);
+void	rr(t_stack *stack, int flag);
+void	rrr(t_stack *stack, int flag);
 int		ft_make_stack(int ac, char **av, t_stack *stack);
 void	f_lstadd(t_swap **stack, t_swap *new);
 int		is_sorted(t_stack *stack);

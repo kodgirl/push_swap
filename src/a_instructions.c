@@ -6,13 +6,13 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 12:31:59 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 15:23:52 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/10 19:26:10 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	sa(t_swap **stack)
+void	sa(t_swap **stack, int flag)
 {
 	t_swap	*head;
 
@@ -23,10 +23,11 @@ void	sa(t_swap **stack)
 		head->next = (*stack)->next;
 		(*stack)->next = head;
 	}
-	printf("sa\n");
+	if (flag == 1)
+		printf("sa\n");
 }
 
-void	ra(t_swap **stack)
+void	ra(t_swap **stack, int flag)
 {
 	t_swap	*head;
 
@@ -39,15 +40,17 @@ void	ra(t_swap **stack)
 		(*stack) = head->next;
 		head->next = NULL;
 	}
-	printf("ra\n");
+	if (flag == 1)
+		printf("ra\n");
 }
 
-int		pa(t_stack *stack)
+int		pa(t_stack *stack, int flag)
 {
 	t_swap	*a_head;
 	t_swap	*b_head;
 
-	printf("pa\n");
+	if (flag == 1)
+		printf("pa\n");
 	if (stack->lenb == 0)
 		return (0);
 	a_head = stack->a_stack;
@@ -69,7 +72,7 @@ int		pa(t_stack *stack)
 	return (0);
 }
 
-void	rra(t_swap **stack)
+void	rra(t_swap **stack, int flag)
 {
 	t_swap	*head;
 	t_swap	*tmp;
@@ -84,5 +87,6 @@ void	rra(t_swap **stack)
 		(*stack)->next = head;
 		tmp->next = NULL;
 	}
-	printf("rra\n");
+	if (flag == 1)
+		printf("rra\n");
 }
