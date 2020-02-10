@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:04:45 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 16:45:21 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/10 18:14:23 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,23 +67,51 @@ int		is_dubl(t_swap *a_stack, char **error)
 	return (0);
 }
 
+int		massive_len(char **str)
+{
+	int		res;
+
+	res = 0;
+	while (str[res] != NULL)
+		++res;
+	return (res);
+}
+
 int		ft_make_stack(int ac, char **av, t_stack *stack)
 {
 	t_swap	*new;
 	char	*error;
+	char	**big_str;
+	int		i;
+	int		first_flag;
 
 	ac--;
+	first_flag = 0;
 	error = NULL;
-	stack->lena = ac;
 	stack->a_stack = ft_memalloc(sizeof(t_swap));
 	stack->b_stack = ft_memalloc(sizeof(t_swap));
-	stack->a_stack = f_lstnew(f_atoi(av[ac], &error));
-	ac--;
 	while (ac)
 	{
-		new = f_lstnew(f_atoi(av[ac], &error));
+		big_str = ft_memalloc(strlen(av[ac]) * sizeof(char));
+		big_str = ft_strsplit(av[ac], ' ');
+		i = massive_len(big_str);
+		while (i > 0)
+		{
+			--i;
+			if (first_flag == 0)
+			{
+				stack->a_stack = f_lstnew(f_atoi(big_str[i], &error));
+				first_flag = 1;
+				stack->lena++;
+			}
+			else
+			{
+				new = f_lstnew(f_atoi(big_str[i], &error));
+				f_lstadd(&stack->a_stack, new);
+				stack->lena++;
+			}				
+		}
 		--ac;
-		f_lstadd(&stack->a_stack, new);
 	}
 	if (error == NULL)
 		is_dubl(stack->a_stack, &error);
