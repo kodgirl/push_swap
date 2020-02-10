@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:38:51 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 16:00:02 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/10 16:45:43 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
-#include "/Users/bjasper/Desktop/g/src/libft/libft.h"
+#include "../src/libft/libft.h"
 
 # define ERROR_NOT_INT		"some arguments are not integers"
 # define ERROR_BIGGER_INT	"some arguments are bigger than an integer"

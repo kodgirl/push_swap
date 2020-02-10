@@ -6,11 +6,11 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 20:19:36 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/05 21:55:01 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/10 16:47:07 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/bjasper/Desktop/g/includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 void	find_index(t_swap *stack, int *tab, int len)
 {

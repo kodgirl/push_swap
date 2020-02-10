@@ -6,11 +6,11 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:04:45 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 15:40:04 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/10 16:45:21 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/bjasper/Desktop/g/includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 void	f_lstadd(t_swap **stack, t_swap *new)
 {

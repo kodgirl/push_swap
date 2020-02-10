@@ -6,11 +6,11 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 20:15:10 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 15:44:42 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/10 16:49:55 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/bjasper/Desktop/g/includes/push_swap.h"
+#include "../includes/push_swap.h"
 
 int		main(int ac, char **av)
 {

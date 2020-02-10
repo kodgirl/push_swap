@@ -6,11 +6,11 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:05:52 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 15:41:54 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/10 16:47:00 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/bjasper/Desktop/g/includes/push_swap.h"
+#include "../includes/push_swap.h"
 void	do_act(t_stack *stack, t_swap *min)
 {
 	while (min->amount_rr)

@@ -6,11 +6,11 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:16:46 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 15:46:11 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/10 16:47:35 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "/Users/bjasper/Desktop/g/includes/push_swap.h"
+#include "../includes/push_swap.h"
 int		insert_place(t_swap *iterator_a, t_swap *iterator_b, t_swap *a_past)
 {
 	int			index_a;
