@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:04:45 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 19:18:53 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/12 18:26:44 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	f_lstadd(t_swap **stack, t_swap *new)
 	}
 }
 
-int		is_sorted(t_stack *stack)
+int		is_sorted(t_stack *stack, int flag)
 {
 	t_swap *head;
 
@@ -35,11 +35,15 @@ int		is_sorted(t_stack *stack)
 		if (stack->a_stack->num >= stack->a_stack->next->num)
 		{
 			stack->a_stack = head;
+			if (flag == 1)
+				write(1, "KO\n", 3);
 			return (0);
 		}
 		stack->a_stack = stack->a_stack->next;
 	}
 	stack->a_stack = head;
+	if (flag == 1)
+		write(1, "OK\n", 3);
 	return (1);
 }
 
@@ -107,6 +111,7 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 				stack->lena++;
 			}
 		}
+		ft_strdel(big_str);
 		--ac;
 	}
 	if (error == NULL)

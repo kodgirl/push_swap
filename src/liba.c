@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 18:01:06 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 18:14:13 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/12 18:42:43 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,33 +14,29 @@
 
 void	print_stacks(t_stack *stack)
 {
-	t_swap *a_head;
-	t_swap *b_head;
+	t_swap	*a_head;
+	t_swap	*b_head;
 	int		a;
 	int		b;
-	
+
 	a_head = stack->a_stack;
 	b_head = stack->b_stack;
 	a = stack->lena;
 	b = stack->lenb;
-	printf("lena: %d\n", a);
-	printf("lenb: %d\n", b);
-	while (a > 1)
+	while (a-- > 1)
 	{
 		printf("%d\n", stack->a_stack->num);
 		stack->a_stack = stack->a_stack->next;
-		--a;
 	}
-	if (a == 1)
+	if (a == 0)
 		printf("%d\n", stack->a_stack->num);
 	printf("\n\n");
-	while (b > 1)
+	while (b-- > 1)
 	{
 		printf("%d\n", stack->b_stack->num);
 		stack->b_stack = stack->b_stack->next;
-		--b;
 	}
-	if (b == 1)
+	if (b == 0)
 		printf("%d\n", stack->b_stack->num);
 	stack->a_stack = a_head;
 	stack->b_stack = b_head;
@@ -83,4 +79,30 @@ int		f_atoi(const char *str, char **error)
 	if (*str != '\0')
 		*error = ERROR_NOT_INT;
 	return (a * b);
+}
+
+void	del_stacks(t_stack *stack)
+{
+	t_swap	*tmp;
+
+	while (stack != NULL && stack->a_stack != NULL)
+	{
+		if (stack->a_stack->next != NULL)
+		{
+			tmp = stack->a_stack->next;
+		}
+		free(stack->a_stack);
+		stack->a_stack = tmp;
+	}
+	while (stack != NULL && stack->b_stack != NULL)
+	{
+		if (stack->b_stack->next != NULL)
+		{
+			tmp = stack->b_stack->next;
+		}
+		free(stack->b_stack);
+		stack->a_stack = tmp;
+	}
+	if (stack != NULL)
+		free(stack);
 }

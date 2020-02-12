@@ -6,7 +6,7 @@
 #    By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/17 14:14:45 by bjasper           #+#    #+#              #
-#    Updated: 2020/02/10 20:36:02 by bjasper          ###   ########.fr        #
+#    Updated: 2020/02/12 18:04:38 by bjasper          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,7 +38,7 @@ SRC_P =	src/main_pushswap.c\
 		src/b_instructions.c\
 		src/ab_instructions.c\
 		src/do_act.c\
-		src/combiner.c
+		src/act_count.c
 
 OBJ_P = $(SRC_P:.c=.o)
 

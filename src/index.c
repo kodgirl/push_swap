@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 20:19:36 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 16:47:07 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/12 18:30:30 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	find_index(t_swap *stack, int *tab, int len)
 {
-	int 	i;
+	int		i;
 	t_swap	*head;
 
 	i = 0;
@@ -37,7 +37,7 @@ void	find_index(t_swap *stack, int *tab, int len)
 	}
 }
 
-void 	ft_sort(int *tab, int len)
+void	ft_sort(int *tab, int len)
 {
 	int i;
 	int tmp;
@@ -53,14 +53,14 @@ void 	ft_sort(int *tab, int len)
 			i = 0;
 		}
 		else
-			++i;		
+			++i;
 	}
 }
 
 void	num_to_ind(t_swap *stack, int len)
 {
-	int	tab[len];
-	int	i;
+	int		tab[len];
+	int		i;
 	t_swap	*head;
 
 	head = stack;
@@ -75,39 +75,4 @@ void	num_to_ind(t_swap *stack, int len)
 	stack = head;
 	ft_sort(tab, len);
 	find_index(stack, tab, len);
-}
-
-void	print_index(t_stack *stack)
-{
-	t_swap *a_head;
-	t_swap *b_head;
-	int		a;
-	int		b;
-	
-	a_head = stack->a_stack;
-	b_head = stack->b_stack;
-	a = stack->lena;
-	b = stack->lenb;
-	printf("lena: %d\n", a);
-	printf("lenb: %d\n", b);
-	while (a > 1)
-	{
-		printf("%d --- rb: %d --- rrb: %d --- ra: %d --- rrb: %d --- rr: %d --- rrr: %d\n", stack->a_stack->index, stack->a_stack->amount_rb, stack->a_stack->amount_rrb, stack->a_stack->amount_ra, stack->a_stack->amount_rra, stack->a_stack->amount_rr, stack->a_stack->amount_rrr);
-		stack->a_stack = stack->a_stack->next;
-		--a;
-	}
-	if (a == 1)
-		printf("%d --- rb: %d --- rrb: %d --- ra: %d --- rrb: %d --- rr: %d --- rrr: %d\n", stack->a_stack->index, stack->a_stack->amount_rb, stack->a_stack->amount_rrb, stack->a_stack->amount_ra, stack->a_stack->amount_rra, stack->a_stack->amount_rr, stack->a_stack->amount_rrr);
-	printf("\n\n");
-	while (b > 1 && stack &&  stack->b_stack && stack->b_stack->next)
-	{
-		printf("%d --- rb: %d --- rrb: %d --- ra: %d --- rra: %d --- rr: %d --- rrr: %d\n", stack->b_stack->index, stack->b_stack->amount_rb, stack->b_stack->amount_rrb, stack->b_stack->amount_ra, stack->b_stack->amount_rra, stack->b_stack->amount_rr, stack->b_stack->amount_rrr);
-		stack->b_stack = stack->b_stack->next;
-		--b;
-	}
-	if (b == 1)
-		printf("%d --- rb: %d --- rrb: %d --- ra: %d --- rra: %d --- rr: %d --- rrr: %d\n", stack->b_stack->index, stack->b_stack->amount_rb, stack->b_stack->amount_rrb, stack->b_stack->amount_ra, stack->b_stack->amount_rra, stack->b_stack->amount_rr, stack->b_stack->amount_rrr);
-	stack->a_stack = a_head;
-	stack->b_stack = b_head;
-	printf("\n\n");
 }
