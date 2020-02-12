@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:16:46 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/12 18:27:20 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/12 18:59:37 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,7 +78,7 @@ void	push_swap(t_stack *stack)
 
 	if (stack->lena == 3)
 		sort_of_three(&stack->a_stack);
-	else if (!is_sorted(stack, 0) && stack->lenb == 0)
+	else if (stack->lena >= 3 && !is_sorted(stack, 0) && stack->lenb == 0)
 		find_limits(stack);
 	while (is_sorted(stack, 0) == 0)
 	{

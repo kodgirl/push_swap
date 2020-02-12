@@ -6,22 +6,11 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:04:45 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/12 18:26:44 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/12 18:57:31 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	f_lstadd(t_swap **stack, t_swap *new)
-{
-	if (!*stack)
-		new->next = NULL;
-	else
-	{
-		new->next = *stack;
-		*stack = new;
-	}
-}
 
 int		is_sorted(t_stack *stack, int flag)
 {
