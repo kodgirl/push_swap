@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:38:51 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/13 15:33:09 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/13 15:56:34 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ void	finish_sort(t_stack *stack);
 void	combine_instructions(t_swap *b_stack);
 t_swap	*find_minimal_act(t_stack *stack);
 void	acts_to_zero(t_swap *stack);
-void	del_stacks(t_stack **stack);
+void	del_stacks(t_stack *stack);
 void	finish_sort(t_stack *stack);
 void	count_act1(t_stack *stack);
 void	count_act2(t_stack *stack);

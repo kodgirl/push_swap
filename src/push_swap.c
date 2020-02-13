@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:16:46 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/13 15:50:53 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/13 16:23:57 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,4 +112,5 @@ void	push_swap(t_stack *stack)
 		if (stack->lenb == 0)
 			finish_sort(stack);
 	}
+	del_stacks(stack);
 }

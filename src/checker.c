@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:04:45 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/13 15:07:02 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/13 16:27:25 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,10 +89,9 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 	int		i;
 
 	error = NULL;
-	stack->b_stack = ft_memalloc(sizeof(t_swap));
 	while (ac)
 	{
-		big_str = ft_memalloc(strlen(av[ac]) * sizeof(char));
+		// big_str = ft_memalloc(strlen(av[ac]) * sizeof(char));
 		big_str = ft_strsplit(av[ac], ' ');
 		i = massive_len(big_str);
 		while (i > 0)
@@ -110,7 +109,7 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 				stack->lena++;
 			}
 		}
-		// del_double_massive(big_str);
+		del_double_massive(big_str);
 		--ac;
 	}
 	if (error == NULL)
@@ -118,6 +117,7 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 	if (error)
 	{
 		printf("%s", error);
+		del_stacks(stack);
 		return (0);
 	}
 	return (1);

@@ -6,36 +6,32 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/13 14:59:34 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/13 15:31:04 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/13 16:31:38 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-void	del_stacks(t_stack **stack)
+void	del_stacks(t_stack *stack)
 {
 	t_swap	*tmp;
 
-	while (stack && *stack != NULL && (*stack)->a_stack != NULL)
+	while (stack && stack->a_stack && stack->a_stack->next)
 	{
-		if ((*stack)->a_stack->next != NULL)
-		{
-			tmp = (*stack)->a_stack->next;
-		}
-		free((*stack)->a_stack);
-		(*stack)->a_stack = tmp;
+		tmp = stack->a_stack;
+		stack->a_stack = stack->a_stack->next;
+		free(tmp);
 	}
-	while (stack != NULL && (*stack)->b_stack != NULL)
+	if (stack && stack->a_stack)
+		free(stack->a_stack);
+	while (stack && stack->b_stack && stack->b_stack->next)
 	{
-		if ((*stack)->b_stack->next != NULL)
-		{
-			tmp = (*stack)->b_stack->next;
-		}
-		free((*stack)->b_stack);
-		(*stack)->a_stack = tmp;
+		tmp = stack->b_stack;
+		stack->b_stack = stack->b_stack->next;
+		free(tmp);
 	}
-	if (*stack != NULL)
-		free(*stack);
+	if (stack && stack->b_stack)
+		free(stack->b_stack);
 }
 
 void	del_double_massive(char **str)
