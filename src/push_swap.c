@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:16:46 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/13 15:25:20 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/13 15:50:53 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ void	sort_limits(t_swap **stack)
 		}
 		if (c < b)
 		{
-			sa(stack, 1);
 			ra(stack, 1);
+			sa(stack, 1);
 		}
 	}
 	if (b < a && b < c)
