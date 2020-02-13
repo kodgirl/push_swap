@@ -6,22 +6,11 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 18:01:06 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/12 19:13:15 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/13 14:59:47 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	f_lstadd(t_swap **stack, t_swap *new)
-{
-	if (!*stack)
-		new->next = NULL;
-	else
-	{
-		new->next = *stack;
-		*stack = new;
-	}
-}
 
 void	print_stacks(t_stack *stack)
 {
@@ -29,7 +18,7 @@ void	print_stacks(t_stack *stack)
 	t_swap	*b_head;
 	int		a;
 	int		b;
-	
+
 	a_head = stack->a_stack;
 	b_head = stack->b_stack;
 	a = stack->lena;

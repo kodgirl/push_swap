@@ -6,11 +6,22 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:04:45 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/12 18:57:31 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/13 15:07:02 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
+void	f_lstadd(t_swap **stack, t_swap *new)
+{
+	if (!*stack)
+		new->next = NULL;
+	else
+	{
+		new->next = *stack;
+		*stack = new;
+	}
+}
 
 int		is_sorted(t_stack *stack, int flag)
 {
@@ -78,7 +89,6 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 	int		i;
 
 	error = NULL;
-	stack->a_stack = ft_memalloc(sizeof(t_swap));
 	stack->b_stack = ft_memalloc(sizeof(t_swap));
 	while (ac)
 	{
@@ -100,7 +110,7 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 				stack->lena++;
 			}
 		}
-		ft_strdel(big_str);
+		// del_double_massive(big_str);
 		--ac;
 	}
 	if (error == NULL)
