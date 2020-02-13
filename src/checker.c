@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:04:45 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/13 16:27:25 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/13 17:41:13 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 	error = NULL;
 	while (ac)
 	{
-		// big_str = ft_memalloc(strlen(av[ac]) * sizeof(char));
 		big_str = ft_strsplit(av[ac], ' ');
 		i = massive_len(big_str);
 		while (i > 0)

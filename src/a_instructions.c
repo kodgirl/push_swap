@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/22 12:31:59 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 19:26:10 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/13 17:27:00 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	sa(t_swap **stack, int flag)
 		(*stack)->next = head;
 	}
 	if (flag == 1)
-		printf("sa\n");
+		write(1, "sa\n", 3);
 }
 
 void	ra(t_swap **stack, int flag)
@@ -41,7 +41,7 @@ void	ra(t_swap **stack, int flag)
 		head->next = NULL;
 	}
 	if (flag == 1)
-		printf("ra\n");
+		write(1, "ra\n", 3);
 }
 
 int		pa(t_stack *stack, int flag)
@@ -50,7 +50,7 @@ int		pa(t_stack *stack, int flag)
 	t_swap	*b_head;
 
 	if (flag == 1)
-		printf("pa\n");
+		write(1, "pa\n", 3);
 	if (stack->lenb == 0)
 		return (0);
 	a_head = stack->a_stack;
@@ -88,5 +88,5 @@ void	rra(t_swap **stack, int flag)
 		tmp->next = NULL;
 	}
 	if (flag == 1)
-		printf("rra\n");
+		write(1, "rra\n", 4);
 }

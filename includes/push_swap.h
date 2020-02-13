@@ -6,23 +6,24 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:38:51 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/13 15:56:34 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/13 17:34:51 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-#include <stdio.h>
+// #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include "../src/libft/libft.h"
+// #include "../src/printf/printf.h"
 
-# define ERROR_NOT_INT		"some arguments are not integers"
-# define ERROR_BIGGER_INT	"some arguments are bigger than an integer"
-# define ERROR_DUBL			"there are duplicates"
-# define ERROR_BAD_INSTRUCT	"an instruction doesn’t exist"
+# define ERROR_NOT_INT		"some arguments are not integers\n"//32
+# define ERROR_BIGGER_INT	"some arguments are bigger than an integer\n"//42
+# define ERROR_DUBL			"there are duplicates\n"//20
+# define ERROR_BAD_INSTRUCT	"an instruction doesn’t exist\n"//29
 
 typedef struct		s_swap
 {
@@ -70,7 +71,7 @@ int		ft_make_stack(int ac, char **av, t_stack *stack);
 void	f_lstadd(t_swap **stack, t_swap *new);
 int		is_sorted(t_stack *stack, int flag);
 int		is_dubl(t_swap *a_stack, char **error);
-void	print_stacks(t_stack *stack);
+// void	print_stacks(t_stack *stack);
 void	push_swap(t_stack *stack);
 void	find_index(t_swap *stack, int *tab, int len);
 void	ft_sort(int *tab, int len);

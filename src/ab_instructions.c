@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 16:46:31 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/12 16:03:10 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/13 17:27:23 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ void	ss(t_stack *stack, int flag)
 	sa(&stack->a_stack, 0);
 	sb(&stack->b_stack, 0);
 	if (flag == 1)	
-		printf("ss\n");
+		write(1, "ss\n", 3);
 }
 
 void	rr(t_stack *stack, int flag)
@@ -25,7 +25,7 @@ void	rr(t_stack *stack, int flag)
 	ra(&stack->a_stack, 0);
 	rb(&stack->b_stack, 0);
 	if (flag == 1)
-		printf("rr\n");
+		write(1, "rr\n", 3);
 }
 
 void	rrr(t_stack *stack, int flag)
@@ -33,5 +33,5 @@ void	rrr(t_stack *stack, int flag)
 	rra(&stack->a_stack, 0);
 	rrb(&stack->b_stack, 0);
 	if (flag == 1)
-		printf("rrr\n");
+		write(1, "rrr\n", 4);
 }

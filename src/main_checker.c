@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:11:05 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/13 16:36:10 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/13 17:39:57 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,7 @@ int		main(int ac, char **av)
 		free(line);
 	}
 	if (size < 0)
-		printf("%s", ERROR_BAD_INSTRUCT);
+		write(1, ERROR_BAD_INSTRUCT, 31);
 	is_sorted(&stack, 1);
 	del_stacks(&stack);
 	exit(0);
