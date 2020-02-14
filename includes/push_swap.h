@@ -6,20 +6,17 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:38:51 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/13 17:34:51 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/14 16:12:20 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
 
-// #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <fcntl.h>
 #include "../src/libft/libft.h"
-// #include "../src/printf/printf.h"
-
 # define ERROR_NOT_INT		"some arguments are not integers\n"//32
 # define ERROR_BIGGER_INT	"some arguments are bigger than an integer\n"//42
 # define ERROR_DUBL			"there are duplicates\n"//20
@@ -54,7 +51,7 @@ typedef struct		s_stack
 
 t_swap	*f_lstnew(int num);
 int		read_instruct(char *line, t_stack *stack, t_instr *i_list);
-int		f_atoi(const char *str, char **error);
+int		f_atoi(const char *str, int *error);
 void	make_instr(t_instr *i_list);
 void	sa(t_swap **stack, int flag);
 void	ra(t_swap **stack, int flag);
@@ -70,7 +67,7 @@ void	rrr(t_stack *stack, int flag);
 int		ft_make_stack(int ac, char **av, t_stack *stack);
 void	f_lstadd(t_swap **stack, t_swap *new);
 int		is_sorted(t_stack *stack, int flag);
-int		is_dubl(t_swap *a_stack, char **error);
+int		is_dubl(t_swap *a_stack);
 // void	print_stacks(t_stack *stack);
 void	push_swap(t_stack *stack);
 void	find_index(t_swap *stack, int *tab, int len);
@@ -80,7 +77,7 @@ void	do_act(t_stack *stack, t_swap *min);
 void	sort_of_three(t_swap **stack);
 void	finish_sort(t_stack *stack);
 void	combine_instructions(t_swap *b_stack);
-t_swap	*find_minimal_act(t_stack *stack);
+void	find_minimal_act(t_stack *stack);
 void	acts_to_zero(t_swap *stack);
 void	del_stacks(t_stack *stack);
 void	finish_sort(t_stack *stack);

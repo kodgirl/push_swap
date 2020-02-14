@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:11:05 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/13 17:39:57 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/14 16:00:04 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		main(int ac, char **av)
 	if (ft_make_stack(ac - 1, av, &stack) == 0)
 	{
 		del_stacks(&stack);
-		exit(0);
+		return (0);
 	}
 	make_instr(&i_list);
 	while ((size = get_next_line(0, &line)) > 0)
@@ -32,7 +32,7 @@ int		main(int ac, char **av)
 		if (read_instruct(line, &stack, &i_list) == 0)
 		{
 			del_stacks(&stack);
-			exit(0);
+			return (0);
 		}
 		free(line);
 	}
@@ -40,5 +40,5 @@ int		main(int ac, char **av)
 		write(1, ERROR_BAD_INSTRUCT, 31);
 	is_sorted(&stack, 1);
 	del_stacks(&stack);
-	exit(0);
+	return (0);
 }

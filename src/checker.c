@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:04:45 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/13 17:41:13 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/14 16:04:59 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,11 @@ int		is_sorted(t_stack *stack, int flag)
 
 	head = stack->a_stack;
 	if (stack->lenb != 0)
+	{
+		if (flag == 1)
+			write(1, "KO\n", 3);
 		return (0);
+	}
 	while (stack->a_stack->next)
 	{
 		if (stack->a_stack->num >= stack->a_stack->next->num)
@@ -47,7 +51,7 @@ int		is_sorted(t_stack *stack, int flag)
 	return (1);
 }
 
-int		is_dubl(t_swap *a_stack, char **error)
+int		is_dubl(t_swap *a_stack)
 {
 	t_swap	*tmp;
 	t_swap	*head;
@@ -61,8 +65,8 @@ int		is_dubl(t_swap *a_stack, char **error)
 		{
 			if (tmp->num == a_stack->num)
 			{
-				*error = ERROR_DUBL;
-				return (0);
+				write(1, ERROR_DUBL, 20);
+				return(1);
 			}
 			a_stack = a_stack->next;
 		}
@@ -84,11 +88,12 @@ int		massive_len(char **str)
 int		ft_make_stack(int ac, char **av, t_stack *stack)
 {
 	t_swap	*new;
-	char	*error;
+	int		error;
 	char	**big_str;
 	int		i;
+	int		num;
 
-	error = NULL;
+	error = 0;
 	while (ac)
 	{
 		big_str = ft_strsplit(av[ac], ' ');
@@ -96,14 +101,17 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 		while (i > 0)
 		{
 			--i;
+			num = f_atoi(big_str[i], &error);
+			if (error == 1)
+				return (0);
 			if (stack->lena == 0)
 			{
-				stack->a_stack = f_lstnew(f_atoi(big_str[i], &error));
+				stack->a_stack = f_lstnew(num);
 				stack->lena++;
 			}
 			else
 			{
-				new = f_lstnew(f_atoi(big_str[i], &error));
+				new = f_lstnew(num);
 				f_lstadd(&stack->a_stack, new);
 				stack->lena++;
 			}
@@ -111,13 +119,7 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 		del_double_massive(big_str);
 		--ac;
 	}
-	if (error == NULL)
-		is_dubl(stack->a_stack, &error);
-	if (error)
-	{
-		printf("%s", error);
-		del_stacks(stack);
+	if (is_dubl(stack->a_stack))
 		return (0);
-	}
 	return (1);
 }

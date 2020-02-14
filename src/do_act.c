@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:05:52 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/10 20:26:37 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/14 16:13:27 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ void	do_act(t_stack *stack, t_swap *min)
 	pa(stack, 1);	
 }
 
-t_swap	*find_minimal_act(t_stack *stack)
+void	find_minimal_act(t_stack *stack)
 {
 	int		act_current;
 	int		act_min;
@@ -48,7 +48,7 @@ t_swap	*find_minimal_act(t_stack *stack)
 			act_min = act_current;
 		}
 	}
-	return (min);
+	do_act(stack, min);
 }
 
 void	sort_of_three(t_swap **stack)

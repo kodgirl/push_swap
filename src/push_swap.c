@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:16:46 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/13 16:23:57 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/14 16:13:15 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,8 +87,6 @@ void	finish_sort(t_stack *stack)
 
 void	push_swap(t_stack *stack)
 {
-	t_swap	*act;
-
 	if (stack->lena == 3)
 		sort_of_three(&stack->a_stack);
 	else if (!is_sorted(stack, 0) && stack->lenb == 0)
@@ -104,10 +102,7 @@ void	push_swap(t_stack *stack)
 			count_act2(stack);
 			combine_instructions(stack->b_stack);
 			if (stack->lenb != 0)
-			{
-				act = find_minimal_act(stack);
-				do_act(stack, act);		//can add to previous function
-			}
+				find_minimal_act(stack);
 		}
 		if (stack->lenb == 0)
 			finish_sort(stack);
