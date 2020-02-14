@@ -6,41 +6,22 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 18:01:06 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/14 16:05:26 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/14 19:50:14 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
 
-// void	print_stacks(t_stack *stack)
-// {
-// 	t_swap	*a_head;
-// 	t_swap	*b_head;
-// 	int		a;
-// 	int		b;
-
-// 	a_head = stack->a_stack;
-// 	b_head = stack->b_stack;
-// 	a = stack->lena;
-// 	b = stack->lenb;
-// 	while (a-- > 1)
-// 	{
-// 		printf("%d\n", stack->a_stack->num);
-// 		stack->a_stack = stack->a_stack->next;
-// 	}
-// 	if (a == 0)
-// 		printf("%d\n", stack->a_stack->num);
-// 	printf("\n\n");
-// 	while (b-- > 1)
-// 	{
-// 		printf("%d\n", stack->b_stack->num);
-// 		stack->b_stack = stack->b_stack->next;
-// 	}
-// 	if (b == 0)
-// 		printf("%d\n", stack->b_stack->num);
-// 	stack->a_stack = a_head;
-// 	stack->b_stack = b_head;
-// }
+void	f_lstadd(t_swap **stack, t_swap *new)
+{
+	if (!*stack)
+		new->next = NULL;
+	else
+	{
+		new->next = *stack;
+		*stack = new;
+	}
+}
 
 t_swap	*f_lstnew(int num)
 {
@@ -53,11 +34,25 @@ t_swap	*f_lstnew(int num)
 	return (new);
 }
 
-int		f_atoi(const char *str, int *error)
+int		check_char(int *b, char str, int *error)
+{
+	size_t	check;
+
+	check = *b;
+	*b = (str - 48) + *b * 10;
+	if (check != *b / 10)
+	{
+		*error = 1;
+		write(1, ERROR_BIGGER_INT, 42);
+		return (1);
+	}
+	return (0);
+}
+
+int		f_atoi(char *str, int *error)
 {
 	int		a;
 	int		b;
-	size_t	check;
 
 	a = 1;
 	b = 0;
@@ -71,14 +66,8 @@ int		f_atoi(const char *str, int *error)
 	}
 	while (*str >= 48 && *str <= 57)
 	{
-		check = b;
-		b = (*str - 48) + b * 10;
-		if (check != b / 10)
-		{
-			*error = 1;
-			write(1, ERROR_BIGGER_INT, 42);
+		if (check_char(&b, *str, error))
 			return (0);
-		}
 		str++;
 	}
 	if (*str != '\0')

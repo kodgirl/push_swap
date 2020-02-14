@@ -6,22 +6,11 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/27 20:04:45 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/14 16:04:59 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/14 19:38:34 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
-
-void	f_lstadd(t_swap **stack, t_swap *new)
-{
-	if (!*stack)
-		new->next = NULL;
-	else
-	{
-		new->next = *stack;
-		*stack = new;
-	}
-}
 
 int		is_sorted(t_stack *stack, int flag)
 {
@@ -66,7 +55,7 @@ int		is_dubl(t_swap *a_stack)
 			if (tmp->num == a_stack->num)
 			{
 				write(1, ERROR_DUBL, 20);
-				return(1);
+				return (1);
 			}
 			a_stack = a_stack->next;
 		}
@@ -85,9 +74,21 @@ int		massive_len(char **str)
 	return (res);
 }
 
-int		ft_make_stack(int ac, char **av, t_stack *stack)
+void	new_list_add(t_stack **stack, int num)
 {
 	t_swap	*new;
+
+	if ((*stack)->lena == 0)
+		(*stack)->a_stack = f_lstnew(num);
+	else
+	{
+		new = f_lstnew(num);
+		f_lstadd(&(*stack)->a_stack, new);
+	}
+}
+
+int		ft_make_stack(int ac, char **av, t_stack *stack)
+{
 	int		error;
 	char	**big_str;
 	int		i;
@@ -98,23 +99,13 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 	{
 		big_str = ft_strsplit(av[ac], ' ');
 		i = massive_len(big_str);
-		while (i > 0)
+		while (i-- > 0)
 		{
-			--i;
 			num = f_atoi(big_str[i], &error);
 			if (error == 1)
 				return (0);
-			if (stack->lena == 0)
-			{
-				stack->a_stack = f_lstnew(num);
-				stack->lena++;
-			}
-			else
-			{
-				new = f_lstnew(num);
-				f_lstadd(&stack->a_stack, new);
-				stack->lena++;
-			}
+			new_list_add(&stack, num);
+			stack->lena++;
 		}
 		del_double_massive(big_str);
 		--ac;

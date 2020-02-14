@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:11:05 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/14 16:00:04 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/14 19:50:20 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,7 @@ int		main(int ac, char **av)
 	int		size;
 	t_instr	i_list;
 
-	if (ac == 1)
-		return (0);
-	if (ft_make_stack(ac - 1, av, &stack) == 0)
+	if (ac == 1 || ft_make_stack(ac - 1, av, &stack) == 0)
 	{
 		del_stacks(&stack);
 		return (0);

@@ -6,11 +6,12 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/03 15:05:52 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/14 16:13:27 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/14 16:32:53 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/push_swap.h"
+
 void	do_act(t_stack *stack, t_swap *min)
 {
 	while (min->amount_rr--)
@@ -25,7 +26,7 @@ void	do_act(t_stack *stack, t_swap *min)
 		rra(&stack->a_stack, 1);
 	while (min->amount_rrb--)
 		rrb(&stack->b_stack, 1);
-	pa(stack, 1);	
+	pa(stack, 1);
 }
 
 void	find_minimal_act(t_stack *stack)
@@ -37,11 +38,13 @@ void	find_minimal_act(t_stack *stack)
 
 	min = stack->b_stack;
 	tmp = stack->b_stack;
-	act_min = min->amount_ra + min->amount_rb + min->amount_rrb + min->amount_rra + min->amount_rr + min->amount_rrr;
+	act_min = min->amount_ra + min->amount_rb + min->amount_rrb +\
+	min->amount_rra + min->amount_rr + min->amount_rrr;
 	while (tmp->next)
 	{
 		tmp = tmp->next;
-		act_current = tmp->amount_ra + tmp->amount_rb + tmp->amount_rrb + tmp->amount_rra + tmp->amount_rr + tmp->amount_rrr;
+		act_current = tmp->amount_ra + tmp->amount_rb + tmp->amount_rrb +\
+		tmp->amount_rra + tmp->amount_rr + tmp->amount_rrr;
 		if (act_current < act_min)
 		{
 			min = tmp;
@@ -67,13 +70,9 @@ void	sort_of_three(t_swap **stack)
 	}
 	else if (c < a && c < b)
 	{
-		if (a < b)
-			rra(stack, 1);
-		else
-		{
+		if (a > b)
 			sa(stack, 1);
-			rra(stack, 1);
-		}
+		rra(stack, 1);
 	}
 	else if (b < a && b < c)
 	{

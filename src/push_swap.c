@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:16:46 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/14 16:13:15 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/14 19:50:28 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,34 +23,19 @@ void	sort_limits(t_swap **stack)
 	c = (*stack)->next->next->index;
 	if (a < b && a < c)
 	{
-		if (b < c)
-		{
-			ra(stack, 1);
-		}
+		ra(stack, 1);
 		if (c < b)
-		{
-			ra(stack, 1);
 			sa(stack, 1);
-		}
 	}
 	if (b < a && b < c)
 	{
+		rra(stack, 1);
 		if (a < c)
-		{
-			rra(stack, 1);
 			sa(stack, 1);
-		}
-		if (c < a)
-		{
-			rra(stack, 1);
-		}
 	}
-	if (c < a && c < b)
+	if (c < a && c < b && b < a)
 	{
-		if (b < a)
-		{
-			sa(stack, 1);
-		}
+		sa(stack, 1);
 	}
 }
 

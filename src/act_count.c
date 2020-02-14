@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/05 21:42:41 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/12 18:05:26 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/14 16:25:45 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,8 @@ int		insert_place(t_swap *iterator_a, t_swap *iterator_b, t_swap *a_past)
 	int			index_a;
 
 	index_a = 0;
-	while (iterator_a && (iterator_b->index > iterator_a->index || iterator_b->index < a_past->index))
+	while (iterator_a && (iterator_b->index > iterator_a->index ||\
+	iterator_b->index < a_past->index))
 	{
 		index_a++;
 		a_past = iterator_a;

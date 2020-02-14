@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/10 16:46:31 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/13 17:27:23 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/14 16:25:04 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	ss(t_stack *stack, int flag)
 {
 	sa(&stack->a_stack, 0);
 	sb(&stack->b_stack, 0);
-	if (flag == 1)	
+	if (flag == 1)
 		write(1, "ss\n", 3);
 }
 

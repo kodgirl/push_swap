@@ -6,7 +6,7 @@
 #    By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/17 14:14:45 by bjasper           #+#    #+#              #
-#    Updated: 2020/02/13 15:00:20 by bjasper          ###   ########.fr        #
+#    Updated: 2020/02/14 20:13:38 by bjasper          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -61,7 +61,7 @@ $(NAME_P): $(OBJ_P)
 	
 clean:
 	rm -rf $(OBJ_C) $(OBJ_P)
-	@make clean -C src/libft/
+	make clean -C src/libft/
 
 fclean: clean
 	rm -rf $(NAME_C) $(NAME_P)
