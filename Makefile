@@ -6,7 +6,7 @@
 #    By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/17 14:14:45 by bjasper           #+#    #+#              #
-#    Updated: 2020/02/15 14:55:36 by bjasper          ###   ########.fr        #
+#    Updated: 2020/02/15 16:48:06 by bjasper          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,14 +50,14 @@ all: $(NAME_C) $(NAME_P)
 
 $(NAME_C): $(OBJ_C)
 	make -C src/libft
-	gcc -o $(NAME_C) $(OBJ_C) -L./src/libft -lft
+	gcc $(GCC_FLAGS) -o $(NAME_C) $(OBJ_C) -L./src/libft -lft
 
 $(NAME_P): $(OBJ_P)
 	make -C src/libft
-	gcc -g -o $(NAME_P) $(OBJ_P) -L./src/libft -lft
+	gcc $(GCC_FLAGS) -o $(NAME_P) $(OBJ_P) -L./src/libft -lft
 	
 %.o: %.c ${INCL}
-	gcc -g -I $(INCL) $< -c -o $@
+	gcc $(GCC_FLAGS) -I $(INCL) $< -c -o $@
 	
 clean:
 	rm -rf $(OBJ_C) $(OBJ_P)

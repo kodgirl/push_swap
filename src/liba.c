@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/07/08 18:01:06 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/15 16:10:02 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/15 16:48:56 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ t_swap	*f_lstnew(int num)
 
 int		check_char(int *b, char str, int *error)
 {
-	size_t	check;
+	int	check;
 
 	check = *b;
 	*b = (str - 48) + *b * 10;

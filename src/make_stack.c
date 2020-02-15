@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 14:56:41 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/15 16:18:02 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/15 16:42:36 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,10 +74,16 @@ int		massive_len(char **str)
 	return (res);
 }
 
-void	new_list_add(t_stack **stack, int num)
+void	new_list_add(t_stack **stack, int num, int *error, char **big_str)
 {
 	t_swap	*new;
 
+	if (*error == 1)
+	{
+		del_double_massive(big_str);
+		del_stacks(*stack);
+		exit(0);
+	}
 	if ((*stack)->lena == 0)
 		(*stack)->a_stack = f_lstnew(num);
 	else
@@ -102,13 +108,7 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 		while (i-- > 0)
 		{
 			num = f_atoi(big_str[i], &error);
-			if (error == 1)
-			{
-				del_double_massive(big_str);
-				del_stacks(stack);
-				return (0);
-			}
-			new_list_add(&stack, num);
+			new_list_add(&stack, num, &error, big_str);
 			stack->lena++;
 		}
 		del_double_massive(big_str);
