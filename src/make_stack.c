@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checker.c                                          :+:      :+:    :+:   */
+/*   make_stack.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/01/27 20:04:45 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/14 19:38:34 by bjasper          ###   ########.fr       */
+/*   Created: 2020/02/15 14:56:41 by bjasper           #+#    #+#             */
+/*   Updated: 2020/02/15 16:18:02 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,11 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 		{
 			num = f_atoi(big_str[i], &error);
 			if (error == 1)
+			{
+				del_double_massive(big_str);
+				del_stacks(stack);
 				return (0);
+			}
 			new_list_add(&stack, num);
 			stack->lena++;
 		}
@@ -111,6 +115,9 @@ int		ft_make_stack(int ac, char **av, t_stack *stack)
 		--ac;
 	}
 	if (is_dubl(stack->a_stack))
+	{
+		del_stacks(stack);
 		return (0);
+	}
 	return (1);
 }

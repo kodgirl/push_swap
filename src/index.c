@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 20:19:36 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/12 18:30:30 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/15 15:54:24 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,10 +59,11 @@ void	ft_sort(int *tab, int len)
 
 void	num_to_ind(t_swap *stack, int len)
 {
-	int		tab[len];
+	int		*tab;
 	int		i;
 	t_swap	*head;
 
+	tab = malloc(sizeof(int) * len);
 	head = stack;
 	i = 0;
 	while (i < len)
@@ -75,4 +76,5 @@ void	num_to_ind(t_swap *stack, int len)
 	stack = head;
 	ft_sort(tab, len);
 	find_index(stack, tab, len);
+	free(tab);
 }

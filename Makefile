@@ -6,13 +6,13 @@
 #    By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2020/01/17 14:14:45 by bjasper           #+#    #+#              #
-#    Updated: 2020/02/14 20:13:38 by bjasper          ###   ########.fr        #
+#    Updated: 2020/02/15 14:55:36 by bjasper          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME_C = checker
 
-SRC_C =	src/checker.c\
+SRC_C =	src/make_stack.c\
 		src/liba.c\
 		src/parce_instructions.c\
 		src/a_instructions.c\
@@ -32,7 +32,7 @@ NAME_P = push_swap
 
 SRC_P =	src/main_pushswap.c\
 		src/push_swap.c\
-		src/checker.c\
+		src/make_stack.c\
 		src/liba.c\
 		src/index.c\
 		src/a_instructions.c\
