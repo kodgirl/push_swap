@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/02/15 14:56:41 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/15 16:42:36 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/18 14:50:17 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int		is_dubl(t_swap *a_stack)
 		{
 			if (tmp->num == a_stack->num)
 			{
-				write(1, ERROR_DUBL, 20);
+				write(1, ERROR_DUBL, 21);
 				return (1);
 			}
 			a_stack = a_stack->next;

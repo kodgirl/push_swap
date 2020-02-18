@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/29 13:16:46 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/15 16:09:43 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/18 15:43:57 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,8 @@ void	find_limits(t_stack *stack)
 		else if (stack->a_stack->index < mid)
 		{
 			pb(stack, 1);
-			rb(&stack->b_stack, 1);
+			if (stack->lenb != 1)
+				rb(&stack->b_stack, 1);
 		}
 	}
 	sort_limits(&stack->a_stack);
@@ -66,14 +67,28 @@ void	find_limits(t_stack *stack)
 
 void	finish_sort(t_stack *stack)
 {
+	t_swap	*tmp;
+	int		last_index;
+
+	tmp = stack->a_stack;
+	while (tmp->next)
+		tmp = tmp->next;
+	last_index = tmp->index;
 	while (stack->a_stack->index != 0)
-		ra(&stack->a_stack, 1);
+	{
+		if (stack->a_stack->index <= last_index / 2 + 1)
+			rra(&stack->a_stack, 1);
+		else
+			ra(&stack->a_stack, 1);
+	}
 }
 
 void	push_swap(t_stack *stack)
 {
 	if (stack->lena == 3)
 		sort_of_three(&stack->a_stack);
+	else if (!is_sorted(stack, 0) && stack->lena == 2)
+		sa(&stack->a_stack, 1);
 	else if (!is_sorted(stack, 0) && stack->lenb == 0)
 		find_limits(stack);
 	while (is_sorted(stack, 0) == 0)
@@ -92,5 +107,4 @@ void	push_swap(t_stack *stack)
 		if (stack->lenb == 0)
 			finish_sort(stack);
 	}
-	del_stacks(stack);
 }

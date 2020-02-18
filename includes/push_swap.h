@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:38:51 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/15 16:09:35 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/18 14:53:09 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define ERROR_NOT_INT		"some arguments are not integers\n"
 # define ERROR_BIGGER_INT	"some arguments are bigger than an integer\n"
 # define ERROR_DUBL			"there are duplicates\n"
-# define ERROR_BAD_INSTRUCT	"an instruction doesn’t exist\n"
+# define ERROR_BAD_INSTRUCT	"wrong instruction\n"
 
 typedef struct		s_swap
 {

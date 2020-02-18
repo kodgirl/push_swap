@@ -6,7 +6,7 @@
 /*   By: bjasper <bjasper@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/21 13:22:37 by bjasper           #+#    #+#             */
-/*   Updated: 2020/02/13 17:39:44 by bjasper          ###   ########.fr       */
+/*   Updated: 2020/02/18 14:53:32 by bjasper          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,7 +72,7 @@ int		read_instruct(char *line, t_stack *stack, t_instr *i_list)
 {
 	if (is_valid_instr(line, i_list) == 0)
 	{
-		write(1, ERROR_BAD_INSTRUCT, 31);
+		write(1, ERROR_BAD_INSTRUCT, 18);
 		return (0);
 	}
 	change_stacks(stack, i_list->i);
